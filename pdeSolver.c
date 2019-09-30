@@ -1,5 +1,7 @@
 #include <stdio.h>
 #include <math.h>
+#include <string.h>
+#include <stdlib.h>
 
 #define PI 3.141592653
 
@@ -46,7 +48,7 @@ Além disso, no início do arquivo, deve constar sob a forma de comentários do 
 
 */
 
-typedef Real_t;
+typedef double Real_t;
 
 typedef struct {
 
@@ -54,35 +56,108 @@ typedef struct {
 
 typedef Solucao;
 
-void le_comandos(int argc, char* argv[]){
+// Trata a entrada passada pela linha de comando
+/* PRECISA MUDAR A CHECAGEM DA VALIDADE DOS ARGUMENTOS -nx, -ny e -i PARA C CERTIFICAR QUE NÃO EXISTEM LETRAS NO NUMERO PASSADO */
+void le_comandos(int argc, char* argv[], unsigned int* nx, unsigned int* ny, unsigned int* iter, char* arq_saida){
   // testar validade das entradas
-    // existem os 3 parametros obrigatorios?
+  if(argc >= 7){ // existem os 3 parametros obrigatorios?
     // "nx", "ny" e "i" existem e são inteiros positivos?
-    // existe um 4o parametro? ele é -o?
+    if( !(strcmp(argv[1], "-nx")) ){
+      if( atoi(argv[2]) > 0 ){
+	*nx = (unsigned int)atoi(argv[1]);
+      }
+      else{
+	// abortar e imprimir erro
+	printf("Argumento Inválido! O valor para -nx é um número inteiro maior que zero!\n");
+      }
+    }
+    else{
+      // abortar e imprimir erro
+      printf("Argumento Inválido! A primeira opção deveria ser -nx.\n");
+    }
+      
+      
+    if( !(strcmp(argv[3], "-ny")) ){
+      if( atoi(argv[4]) > 0 ){
+	*ny = (unsigned int)atoi(argv[1]);
+      }
+      else{
+	// abortar e imprimir erro
+	printf("Argumento Inválido! O valor para -ny é um número inteiro maior que zero!\n");
+      }
+    }
+    else{
+      // abortar e imprimir erro
+      printf("Argumento Inválido! A segunda opção deveria ser -ny.\n");
+    }
+
+      
+    if( !(strcmp(argv[5], "-i")) ){
+      if( atoi(argv[6]) > 0 ){
+	*iter = (unsigned int)atoi(argv[1]);
+      }
+      else{
+	// abortar e imprimir erro
+	printf("Argumento Inválido! O valor para -i é um número inteiro maior que zero!");
+      }
+    }
+    else{
+      printf("Argumento Inválido! A terceira opção deveria ser -i.\n");
+    }
+      
+      
+    if( argc >= 8 ){ // existe um 4o parametro?
+      if( argc == 9 && !(strcmp(argv[7], "-o")) ){ // ele é -o?
+	  arq_saida = argv[8];
+      }
+      else{
+	// abortar e imprimir erro
+	printf("Erro!\nA chamada deve ser da forma 'pdeSolver -nx <Nx> -ny <Ny> -i <maxIter> -o arquivo_saida'.\n");
+      }
+    }
+    else{
+      // abortar e imprimir erro
+      printf("Erro! Número errado de argumentos!\nA chamada deve ser da forma 'pdeSolver -nx <Nx> -ny <Ny> -i <maxIter> -o arquivo_saida'.\n");
+    }
+      
+  }
+  else{
+    // abortar e imprimir erro
+    printf("Número errado de argumentos!\nA chamada deve ser da forma 'pdeSolver -nx <Nx> -ny <Ny> -i <maxIter> -o arquivo_saida'.\n");
+  }
+  return;
 }
 
 Solucao* aloca_solucao( Real_t var_init ){
-
+  return NULL;
 }
 
 Sist_Lin* aloca_sist(){
-
+  return NULL;
 }
 
-void escreve_solucao_gnuplot{
+void escreve_solucao_gnuplot(){
   // abra o arquivo de saida
   // escreva os comentarios do gnulot acerca da execução do programa
   // escreva os valores de x, y e u(x,y) no arquivo de saida
   // feche o arquivo de saída
+  return;
 }
 
 void libera_sist(){
+  return;
+}
 
+void libera_solucao(){
+  return;
 }
 
 int main(int argc, char* argv[]){
+  unsigned int nx, ny, iter;
+  char* arq_saida;
+
   // ler entradas da linha de comando
-  le_comandos( argc, argv );
+  le_comandos( argc, argv, &nx, &ny, &iter, arq_saida );
             
   // alocar as estruturas necessárias pra resolver o problema
   Sist_Lin *sistema = aloca_sist();
@@ -102,183 +177,4 @@ int main(int argc, char* argv[]){
   
   return 0;
 }
-
-/*
-#define index(i,j,n) (i*n)+j
-#define mymalloc(n,tipo) (tipo*)malloc(n*sizeof(tipo))
-#define testmalloc(v) if(v == NULL) abort()
-
-real_t kahanSum( real_t *input, unsigned int tam ){
-  real_t sum = 0.0;                    // Prepare the accumulator.
-  real_t c = 0.0;                     // A running compensation for lost low-order bits.
-  
-  for (int i = 0; i < tam; i++){     // The array input has elements indexed input[1] to input[input.length].
-    // adicionei essas definições, eram definidas dentro do for anteriormente.
-    real_t y = 0.0;
-    real_t t = 0.0;
-    //-------------------
-    y = input[i] - c;         // c is zero the first time around.
-    t = sum + y;              // Alas, sum is big, y small, so low-order digits of y are lost.
-    c = (t - sum) - y;            // (t - sum) cancels the high-order part of y; subtracting y recovers negative (low part of y)
-    sum = t;                      // Algebraically, c should always be zero. Beware overly-aggressive optimizing compilers!
-    // Next time around, the lost low part will be added to y in a fresh attempt.
-  }
-  return sum;
-}
-
-/*!
-  \brief Essa função calcula a norma L2 do resíduo de um sistema linear 
-
-  \param SL Ponteiro para o sistema linear
-  \param x Solução do sistema linear
-*/
-real_t normaL2Residuo(SistLinear_t *SL, real_t *x)
-{
-  unsigned int tam = SL->n;
-  real_t *res = mymalloc(tam, real_t);
-  testmalloc(res);  
-  
-  //calcula resíduo
-  for(int i = 0; i < tam; i++){
-    res[i] = 0;
-    for(int j = 0; j < tam; j++){
-      res[i] += SL->A[index(i,j,tam)] * x[j];
-    }
-  }
-  real_t norma = 0;
-  real_t diff = 0;
-  //calcula norma do vetor ao residuo
-  for(int i = 0; i < tam; i++){
-    for(int j = 0; j < tam; j++){
-      diff = fabs(res[i] - SL->b[i]);
-      norma += diff * diff;
-    }
-  }
-
-  norma = sqrt(norma);
-
-  free(res);
-  return norma;
-}
-
-/*!
-  \brief Método de Gauss-Seidel
-
-  \param SL Ponteiro para o sistema linear
-  \param x ponteiro para o vetor solução
-  \param erro menor erro aproximado para encerrar as iterações
-
-  \return código de erro. Um nr positivo indica sucesso e o nr
-          de iterações realizadas. Um nr. negativo indica um erro.
-  */
-
-int gaussSeidel (SistLinear_t *SL, real_t *x, real_t erro){
-  double tempo_exec = timestamp();
-#ifdef DEBUG_p
-  printf("\nOperações Gauss-Seidel:\n");
-#endif
-
-  unsigned int n = SL->n;
-  real_t diff, max_diff;
-  real_t *x_next = mymalloc(n,real_t);
-  testmalloc(x_next);
-
-  for(int k = 0; k <= MAXIT; ++k){
-
-    //checar maximo de iterações
-    if( k == MAXIT ){
-      printf("Não houve convergência!\n");
-      free(x_next);
-      return 0;
-    }
-
-#ifdef DEBUG_p
-    printf("Iteração %d:\n\n", k);
-#endif
-
-    //--------------------- SK
-    real_t sum, c, y, t;
-    //--------------------- SK
-
-    for(int i = 0; i < n; ++i){
-      x_next[i] = SL->b[i];
-
-#ifdef DEBUG_p
-      printf("x_next[%d] = b[%d];\n", i, i);
-#endif
-      //-------------------- SK
-      sum = 0.0;
-      c = 0.0;
-      //-------------------- SK
-
-      for(int j = 0; j < n; ++j){
-        //------------------ SK
-        y = 0.0;
-        t = 0.0;
-        //------------------- SK
-
-        if( j != i ){
-          if(j < i){
-            y = (-(SL->A[index(i,j,n)] * x_next[j]) - c);
-	          t = (x_next[i] + y);
-            c = (t - x_next[i]) - y;
-            x_next[i] = t;
-
-#ifdef DEBUG_p
-            printf("x_next[%d] -= A[%d] * x_next[%d];\n", i, index(i,j,n), j);
-#endif
-	        }else{
-            y = (-(SL->A[index(i,j,n)] * x[j]) - c);
-	          t = (x_next[i] + y);
-            c = (t - x_next[i]) - y;
-            x_next[i] = t;
-
-#ifdef DEBUG_p
-            printf("x_next[%d] -= A[%d] * x[%d];\n", i, index(i,j,n), j);
-#endif
-          }
-        }
-      }
-      if(SL->A[index(i,i,n)])
-        x_next[i] /= SL->A[index(i,i,n)];
-
-#ifdef DEBUG_p
-      printf("x_next[%d] /= A[%d];\n", i, index(i,i,n));
-#endif
-
-    }
-    
-    // checar tolerancia 
-    max_diff = 0;
-    for(int t = 0; t < n; t++){
-      diff = fabs( (x_next[t] - x[t]) ); 
-      if( diff > max_diff ){
-        max_diff = diff;
-      }
-    }
-    if( max_diff < erro ){
-      for(int t = 0; t < n; ++t){
-        x[t] = x_next[t]; 
-      }     
-      break;
-    }  
-
-    for(int t = 0; t < n; ++t){
-      x[t] = x_next[t]; 
-    }
-  }
-
-  tempo_exec -= timestamp();
-  printf("Tempo de Execucao de gaussSiedel: %10.10lf seg.\n", -(tempo_exec)/1000);
-
-  free(x_next);
-  return 1;
-}
-
-  
-
-double eq_diff(double x){ // u = u(x,y)
-  return (Udx + Udy) - (Ud2x + Ud2y) + 4*PI*PI*U;
-}
-*/
 
