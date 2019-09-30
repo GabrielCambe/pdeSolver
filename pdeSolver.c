@@ -46,20 +46,60 @@ Além disso, no início do arquivo, deve constar sob a forma de comentários do 
 
 */
 
-int main(int argc, char* argv[]){
-  // ler entradas da linha de comando
-      // testar validade das entradas
-            // nx e ny são inteiros positivos?
-            
-  // alocar as estruturas necessárias pra resolver o problema
-  // crie o vetor solução nulo
-  // comece um for ate o numero maximo de iteracoes
-      //
+typedef Real_t;
+
+typedef struct {
+
+}Sist_Lin;
+
+typedef Solucao;
+
+void le_comandos(int argc, char* argv[]){
+  // testar validade das entradas
+    // existem os 3 parametros obrigatorios?
+    // "nx", "ny" e "i" existem e são inteiros positivos?
+    // existe um 4o parametro? ele é -o?
+}
+
+Solucao* aloca_solucao( Real_t var_init ){
+
+}
+
+Sist_Lin* aloca_sist(){
+
+}
+
+void escreve_solucao_gnuplot{
   // abra o arquivo de saida
   // escreva os comentarios do gnulot acerca da execução do programa
   // escreva os valores de x, y e u(x,y) no arquivo de saida
   // feche o arquivo de saída
+}
+
+void libera_sist(){
+
+}
+
+int main(int argc, char* argv[]){
+  // ler entradas da linha de comando
+  le_comandos( argc, argv );
+            
+  // alocar as estruturas necessárias pra resolver o problema
+  Sist_Lin *sistema = aloca_sist();
+
+  // crie o vetor solução nulo
+  Solucao *x = aloca_solucao( 0 );
+
+  // comece um for ate o numero maximo de iteracoes
+    // resolva a equacao diferencial por diferencas finitas e gaus-siedel
+  
+  // escreve o arquivo de saída
+  escreve_solucao_gnuplot();
+  
   // libere a memoria usada para as estruturas
+  libera_sist();
+  libera_solucao();
+  
   return 0;
 }
 
