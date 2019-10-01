@@ -136,11 +136,13 @@ Sist_Lin* aloca_sist(){
   return NULL;
 }
 
-void escreve_solucao_gnuplot(){
+void escreve_solucao_gnuplot(char* arq_saida){
   // abra o arquivo de saida
+  FILE *saida = fopen(arq_saida, "w+");
   // escreva os comentarios do gnulot acerca da execução do programa
   // escreva os valores de x, y e u(x,y) no arquivo de saida
   // feche o arquivo de saída
+  fclose(arq_saida);
   return;
 }
 
@@ -169,7 +171,7 @@ int main(int argc, char* argv[]){
     // resolva a equacao diferencial por diferencas finitas e gaus-siedel
   
   // escreve o arquivo de saída
-  escreve_solucao_gnuplot();
+  escreve_solucao_gnuplot( arq_saida );
   
   // libere a memoria usada para as estruturas
   libera_sist();
