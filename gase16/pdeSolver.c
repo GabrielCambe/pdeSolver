@@ -135,22 +135,22 @@ Sist_Lin* aloca_sist(){
   return NULL;
 }
 
-void escreve_solucao_gnuplot(char* arq_saida, Real_t tempo_medio, Real_t* residuo_iter){
+void escreve_solucao_gnuplot(char* arq_saida, Real_t tempo_medio, unsigned int num_iter, Real_t* residuo_iter){
   // abra o arquivo de saida
   FILE *saida = fopen(arq_saida, "w+");
   // escreva os comentarios do gnulot acerca da execução do programa
   fprintf(saida, "\n###########\n");
   fprintf(saida, "# Tempo Método GS: %f ms.\n", tempo_medio);
   fprintf(saida, "#\n# Norma L2 do Residuo\n");
-  for(unsigned int i = 1; i <= num_iter; ++i){
-    fprintf(saida, "# i=%d: %lf", i, residuo_iter[i] )
+  for(unsigned int i = 0; i < num_iter; ++i){
+    fprintf(saida, "# i=%d: %lf", i+1, residuo_iter[i] );
   }
   fprintf(saida, "\n###########\n");
   
   // escreva os valores de x, y e u(x,y) no arquivo de saida
-  
+
   // feche o arquivo de saída
-  fclose(arq_saida);
+  fclose(saida);
   return;
 }
 
@@ -168,7 +168,6 @@ int main(int argc, char* argv[]){
 
   // ler entradas da linha de comando
   le_comandos( argc, argv, &nx, &ny, &iter, arq_saida );
-            
   // alocar as estruturas necessárias pra resolver o problema
   Sist_Lin *sistema = aloca_sist();
 
@@ -179,7 +178,9 @@ int main(int argc, char* argv[]){
     // resolva a equacao diferencial por diferencas finitas e gaus-siedel
   
   // escreve o arquivo de saída
-  escreve_solucao_gnuplot( arq_saida );
+
+  Real_t norma[] = { 4.0, 4.58, 13.57, 19.12, 5.55 };
+  escreve_solucao_gnuplot( arq_saida, 7.98, 5, norma );
   
   // libere a memoria usada para as estruturas
   libera_sist();
