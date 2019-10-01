@@ -45,7 +45,6 @@ Além disso, no início do arquivo, deve constar sob a forma de comentários do 
 # i=3: <valor>
 # ...
 ##########
-
 */
 
 typedef double Real_t;
@@ -136,11 +135,20 @@ Sist_Lin* aloca_sist(){
   return NULL;
 }
 
-void escreve_solucao_gnuplot(char* arq_saida){
+void escreve_solucao_gnuplot(char* arq_saida, Real_t tempo_medio, Real_t* residuo_iter){
   // abra o arquivo de saida
   FILE *saida = fopen(arq_saida, "w+");
   // escreva os comentarios do gnulot acerca da execução do programa
+  fprintf(saida, "\n###########\n");
+  fprintf(saida, "# Tempo Método GS: %f ms.\n", tempo_medio);
+  fprintf(saida, "#\n# Norma L2 do Residuo\n");
+  for(unsigned int i = 1; i <= num_iter; ++i){
+    fprintf(saida, "# i=%d: %lf", i, residuo_iter[i] )
+  }
+  fprintf(saida, "\n###########\n");
+  
   // escreva os valores de x, y e u(x,y) no arquivo de saida
+  
   // feche o arquivo de saída
   fclose(arq_saida);
   return;
