@@ -57,13 +57,13 @@ typedef Solucao;
 
 // Trata a entrada passada pela linha de comando
 /* PRECISA MUDAR A CHECAGEM DA VALIDADE DOS ARGUMENTOS -nx, -ny e -i PARA C CERTIFICAR QUE NÃO EXISTEM LETRAS NO NUMERO PASSADO */
-void le_comandos(int argc, char* argv[], unsigned int* nx, unsigned int* ny, unsigned int* iter, char* arq_saida){
+void le_comandos(int argc, char* argv[], unsigned int* nx, unsigned int* ny, unsigned int* iter, char** arq_saida){
   // testar validade das entradas
   if(argc >= 7){ // existem os 3 parametros obrigatorios?
     // "nx", "ny" e "i" existem e são inteiros positivos?
     if( !(strcmp(argv[1], "-nx")) ){
       if( atoi(argv[2]) > 0 ){
-	*nx = (unsigned int)atoi(argv[1]);
+	*nx = (unsigned int)atoi(argv[2]);
       }
       else{
 	// abortar e imprimir erro
@@ -78,7 +78,7 @@ void le_comandos(int argc, char* argv[], unsigned int* nx, unsigned int* ny, uns
       
     if( !(strcmp(argv[3], "-ny")) ){
       if( atoi(argv[4]) > 0 ){
-	*ny = (unsigned int)atoi(argv[1]);
+	*ny = (unsigned int)atoi(argv[4]);
       }
       else{
 	// abortar e imprimir erro
@@ -93,7 +93,7 @@ void le_comandos(int argc, char* argv[], unsigned int* nx, unsigned int* ny, uns
       
     if( !(strcmp(argv[5], "-i")) ){
       if( atoi(argv[6]) > 0 ){
-	*iter = (unsigned int)atoi(argv[1]);
+	*iter = (unsigned int)atoi(argv[6]);
       }
       else{
 	// abortar e imprimir erro
@@ -107,10 +107,10 @@ void le_comandos(int argc, char* argv[], unsigned int* nx, unsigned int* ny, uns
       
     if( argc >= 8 ){ // existe um 4o parametro?
       if( argc == 9 && !(strcmp(argv[7], "-o")) ){ // ele é -o?
-	  arq_saida = argv[8];
+	  *arq_saida = argv[8];
       }
       else{
-	// abortar e imprimir erro
+	// abortar e imprimir erro0
 	printf("Erro!\nA chamada deve ser da forma 'pdeSolver -nx <Nx> -ny <Ny> -i <maxIter> -o arquivo_saida'.\n");
       }
     }
@@ -139,13 +139,13 @@ void escreve_solucao_gnuplot(char* arq_saida, Real_t tempo_medio, unsigned int n
   // abra o arquivo de saida
   FILE *saida = fopen(arq_saida, "w+");
   // escreva os comentarios do gnulot acerca da execução do programa
-  fprintf(saida, "\n###########\n");
+  fprintf(saida, "###########\n");
   fprintf(saida, "# Tempo Método GS: %f ms.\n", tempo_medio);
   fprintf(saida, "#\n# Norma L2 do Residuo\n");
   for(unsigned int i = 0; i < num_iter; ++i){
-    fprintf(saida, "# i=%d: %lf", i+1, residuo_iter[i] );
+    fprintf(saida, "# i=%d: %lf\n", i+1, residuo_iter[i] );
   }
-  fprintf(saida, "\n###########\n");
+  fprintf(saida, "###########\n");
   
   // escreva os valores de x, y e u(x,y) no arquivo de saida
 
@@ -167,7 +167,7 @@ int main(int argc, char* argv[]){
   char* arq_saida;
 
   // ler entradas da linha de comando
-  le_comandos( argc, argv, &nx, &ny, &iter, arq_saida );
+  le_comandos( argc, argv, &nx, &ny, &iter, &arq_saida );
   // alocar as estruturas necessárias pra resolver o problema
   Sist_Lin *sistema = aloca_sist();
 
@@ -178,8 +178,7 @@ int main(int argc, char* argv[]){
     // resolva a equacao diferencial por diferencas finitas e gaus-siedel
   
   // escreve o arquivo de saída
-
-  Real_t norma[] = { 4.0, 4.58, 13.57, 19.12, 5.55 };
+  Real_t norma[5] = { 4.0, 4.58, 13.57, 19.12, 5.55 };
   escreve_solucao_gnuplot( arq_saida, 7.98, 5, norma );
   
   // libere a memoria usada para as estruturas
