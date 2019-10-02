@@ -1,0 +1,12 @@
+set title "Solução númerica da PDE"    
+
+# set xlabel ""    
+# set ylabel "" 
+
+# COLOQUE O DOMINIO CORRETO EM X E Y
+# TENTE FAZER A MESH SER DO TAMANHO DOS N'S PASSADOS
+
+set dgrid3d 30,30
+set hidden3d
+splot solucao u 1:2:3 with lines
+pause -1 "Pressione enter para continuar!"

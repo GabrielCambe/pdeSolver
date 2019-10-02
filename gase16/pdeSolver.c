@@ -2,6 +2,7 @@
 #include <math.h>
 #include <string.h>
 #include <stdlib.h>
+#include <time.h>
 
 #define PI 3.141592653
 
@@ -115,8 +116,8 @@ void le_comandos(int argc, char* argv[], unsigned int* nx, unsigned int* ny, uns
       }
     }
     else{
-      // abortar e imprimir erro
-      printf("Erro! Número errado de argumentos!\nA chamada deve ser da forma 'pdeSolver -nx <Nx> -ny <Ny> -i <maxIter> -o arquivo_saida'.\n");
+      // setta a saída para stdout caso -o não exista
+      *arq_saida = NULL;
     }
       
   }
@@ -136,21 +137,41 @@ Sist_Lin* aloca_sist(){
 }
 
 void escreve_solucao_gnuplot(char* arq_saida, Real_t tempo_medio, unsigned int num_iter, Real_t* residuo_iter){
-  // abra o arquivo de saida
-  FILE *saida = fopen(arq_saida, "w+");
-  // escreva os comentarios do gnulot acerca da execução do programa
-  fprintf(saida, "###########\n");
-  fprintf(saida, "# Tempo Método GS: %f ms.\n", tempo_medio);
-  fprintf(saida, "#\n# Norma L2 do Residuo\n");
-  for(unsigned int i = 0; i < num_iter; ++i){
-    fprintf(saida, "# i=%d: %lf\n", i+1, residuo_iter[i] );
-  }
-  fprintf(saida, "###########\n");
+  srand(time(NULL));
+  if( arq_saida != NULL ){
+    // abra o arquivo de saida
+    FILE *saida = fopen(arq_saida, "w+");
+    // escreva os comentarios do gnulot acerca da execução do programa num arquivo de saída
+    fprintf(saida, "###########\n");
+    fprintf(saida, "# Tempo Método GS: %f ms.\n", tempo_medio);
+    fprintf(saida, "#\n# Norma L2 do Residuo\n");
+    for(unsigned int i = 0; i < num_iter; ++i){
+      fprintf(saida, "# i=%d: %lf\n", i+1, residuo_iter[i] );
+    }
+    fprintf(saida, "###########\n");
   
-  // escreva os valores de x, y e u(x,y) no arquivo de saida
-
-  // feche o arquivo de saída
-  fclose(saida);
+    // escreva os valores de x, y e u(x,y) no arquivo de saida
+    for(unsigned int i = 0; i < 10; ++i){
+      fprintf(saida, "%lf\t%lf\t%lf\n", (Real_t)rand(), (Real_t)rand(), (Real_t)rand());
+    }
+    // feche o arquivo de saída
+    fclose(saida);
+  }
+  else{
+    // escreva os comentarios do gnulot acerca da execução do programa na saída padrão
+    printf("###########\n");
+    printf("# Tempo Método GS: %f ms.\n", tempo_medio);
+    printf("#\n# Norma L2 do Residuo\n");
+    for(unsigned int i = 0; i < num_iter; ++i){
+      printf("# i=%d: %lf\n", i+1, residuo_iter[i] );
+    }
+    printf("###########\n");
+  
+    // escreva os valores de x, y e u(x,y) no arquivo de saida
+    for(unsigned int i = 0; i < 10; ++i){
+      printf("%lf\t%lf\t%lf\n", (Real_t)rand(), (Real_t)rand(), (Real_t)rand());
+    }
+  }
   return;
 }
 
@@ -168,22 +189,26 @@ int main(int argc, char* argv[]){
 
   // ler entradas da linha de comando
   le_comandos( argc, argv, &nx, &ny, &iter, &arq_saida );
-  // alocar as estruturas necessárias pra resolver o problema
+  // alocar as estruturas necessárias pra resolver o problema:
+    // alocar sistema de equações
   Sist_Lin *sistema = aloca_sist();
+    // alocar vetor de residuos
+  Real_t norma_residuo[5] = { 4.0, 4.58, 13.57, 19.12, 5.55 };
 
   // crie o vetor solução nulo
   Solucao *x = aloca_solucao( 0 );
 
   // comece um for ate o numero maximo de iteracoes
     // resolva a equacao diferencial por diferencas finitas e gaus-siedel
+    // calcule o residuo para esta iteração
   
   // escreve o arquivo de saída
-  Real_t norma[5] = { 4.0, 4.58, 13.57, 19.12, 5.55 };
-  escreve_solucao_gnuplot( arq_saida, 7.98, 5, norma );
+  escreve_solucao_gnuplot( arq_saida, 7.98, 5, norma_residuo );
   
   // libere a memoria usada para as estruturas
   libera_sist();
   libera_solucao();
+  //free(norma_residuo);
   
   return 0;
 }
