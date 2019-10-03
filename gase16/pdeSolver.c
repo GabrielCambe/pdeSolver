@@ -128,7 +128,9 @@ void le_comandos(int argc, char* argv[], unsigned int* nx, unsigned int* ny, uns
   return;
 }
 
-Solucao* aloca_solucao( Real_t var_init ){
+Solucao* aloca_e_inicializa_solucao( Real_t var_init, FUNCAO f1, FUNCAO f2, FUNCAO f3, FUNCAO F4 ){
+  aloca_solucao();
+  // inicializa solucao com 0s nos pontos interiores e com cada uma das funções nas bordas
   return NULL;
 }
 
@@ -190,20 +192,25 @@ int main(int argc, char* argv[]){
   // ler entradas da linha de comando
   le_comandos( argc, argv, &nx, &ny, &iter, &arq_saida );
   // alocar as estruturas necessárias pra resolver o problema:
-    // alocar sistema de equações
+  // alocar sistema de equações
   Sist_Lin *sistema = aloca_sist();
-    // alocar vetor de residuos
-  Real_t norma_residuo[5] = { 4.0, 4.58, 13.57, 19.12, 5.55 };
+  // alocar vetor de residuos
+  Real_t norma_residuo_por_iter[5] = { 4.0, 4.58, 13.57, 19.12, 5.55 };
+  
 
   // crie o vetor solução nulo
-  Solucao *x = aloca_solucao( 0 );
-
+  // E preencha o vetor com as condições de contorno
+  Solucao *x = aloca_e_inicializa_solucao( 0, f1, f2, f3, f4 );
+  
   // comece um for ate o numero maximo de iteracoes
+  for(unsigned int k = 1; k <= iter; ++k )
     // resolva a equacao diferencial por diferencas finitas e gaus-siedel
+    // inicializa x e y com PI/nx e PI/ny
+    // percorra os pontos atualizando os valores de
     // calcule o residuo para esta iteração
   
   // escreve o arquivo de saída
-  escreve_solucao_gnuplot( arq_saida, 7.98, 5, norma_residuo );
+  escreve_solucao_gnuplot( arq_saida, 7.98, k, norma_residuo_por_iter );
   
   // libere a memoria usada para as estruturas
   libera_sist();
