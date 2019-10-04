@@ -192,21 +192,22 @@ int main(int argc, char* argv[]){
   // ler entradas da linha de comando
   le_comandos( argc, argv, &nx, &ny, &iter, &arq_saida );
   // alocar as estruturas necessárias pra resolver o problema:
-  // calcular o valor dos passos
-  // alocar sistema de equações
+    // calcular o valor dos passos
+    // alocar e inicializar vetor b
+      // teremos vetores x e y, de tamanho nx+2 e ny+2
+      // populados com x = 0; x <= PI; x += PI/(nx+1) e y = 0; y <= PI; y += PI/(ny+1) 
+    // alocar e inicializar sistema de equações 
+    // E preencha o vetor com as condições de contorno
   Sist_Lin *sistema = aloca_sist();
-  // alocar vetor de residuos
+    // alocar e inicializar vetor de residuos
   Real_t norma_residuo_por_iter[5] = { 4.0, 4.58, 13.57, 19.12, 5.55 };
-  
-
-  // crie o vetor solução nulo
-  // E preencha o vetor com as condições de contorno
+    // alocar e inicializar o vetor solução nulo
   Solucao *x = aloca_e_inicializa_solucao( 0, f1, f2, f3, f4 );
   
   // comece um for ate o numero maximo de iteracoes
   for(unsigned int k = 1; k <= iter; ++k )
     // resolva a equacao diferencial por diferencas finitas e gaus-siedel
-    // inicializa x e y com PI/nx e PI/ny
+    // inicializa x e y com PI/(nx+1) e PI/(ny+1)
     // percorra os pontos atualizando os valores de
     // calcule o residuo para esta iteração
   
