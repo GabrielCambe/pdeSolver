@@ -174,3 +174,10 @@ int gaussSeidel (SistLinear_t *SL, real_t *x, real_t erro){
 double eq_diff(double x){ // u = u(x,y)
   return (Udx + Udy) - (Ud2x + Ud2y) + 4*PI*PI*U;
 }
+
+
+
+
+
+
+void gaussSeidel (struct t_SistLinear3Diag SL, double *x, double erro) {double norma, diff, xk;int k = 1, i;do {// primeira equação fora do laço    i = 0;    xk = (SL->b[i] – SL→ds[i]*x[i+1]) / SL->dp[i];    norma = fabs(xk – x[0]);    x[i] = xk;// equações centraisfor (i=1; i<SL->n-1; ++i) {      xk = (SL->b[i] - SL->ds[i]*x[i+1]- SL->di[i]*x[i-1]) / SL->dp[i];// Calcula norma ||  x(k) – x(k – 1) ||      diff = fabs(xk – x[i]);      norma = (diff > norma) ? (diff) : (norma);x[i] = xk;    }// ultima equação fora do laço    xk = (SL->b[i] - SL->di[i]*x[i-1]) / SL->dp[i];    diff = fabs(xk – x[i]);    norma = (diff > norma) ? (diff) : (norma);x[i] = xk;    ++k;   } while (norma > erro && k < MAXIT) ;}

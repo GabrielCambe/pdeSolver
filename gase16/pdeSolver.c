@@ -192,6 +192,7 @@ int main(int argc, char* argv[]){
   // ler entradas da linha de comando
   le_comandos( argc, argv, &nx, &ny, &iter, &arq_saida );
   // alocar as estruturas necessárias pra resolver o problema:
+  // calcular o valor dos passos
   // alocar sistema de equações
   Sist_Lin *sistema = aloca_sist();
   // alocar vetor de residuos
