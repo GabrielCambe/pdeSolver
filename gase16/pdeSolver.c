@@ -140,10 +140,30 @@ Real_t* aloca_e_inicializa_solucao( Sist_Lin * sist ){
   Real_t* solucao = myMalloc(((sist->nx+2)*(sist->ny+2)), Real_t);
   testMalloc( solucao );
 
-  for(unsigned int i = 0; i < ((sist->nx)+2); ++i){
-    for(unsigned int j = 0; i < ((sist->ny)+2); ++i){
-      // acessa o vetor x
-      solucao[ index(i,j, ((sist->nx+2)*(sist->ny+2))) ];
+  Real_t hx = 1/((sist->nx)+1); Real_t hy = 1/((sist->ny)+1);
+  Real_t x = 0;
+  Real_t y = 0;
+
+  for(unsigned int i = 0; i < ((sist->nx)+2); ++i, x += hx){
+    y = 0;
+    for(unsigned int j = 0; j < ((sist->ny)+2); ++j, y += hy){
+      // acessa e inicializa o vetor x
+      if(i == 0 || i == ((sist->nx)+1)){
+	solucao[ index(i,j, ((sist->nx+2)*(sist->ny+2))) ] = 0 ;
+	continue;
+      }
+      
+      if(j == 0){
+	solucao[ index(i,j, ((sist->nx+2)*(sist->ny+2))) ] = sin( 2*PI*(PI-x) ) * sinh( PI*PI );
+	continue;
+      }
+      
+      if(j == ((sist->ny)+1)){
+	solucao[ index(i,j, ((sist->nx+2)*(sist->ny+2))) ] = sin( 2*PI*x ) * sinh( PI*PI );
+	continue;
+      }
+      
+      solucao[ index(i,j, ((sist->nx+2)*(sist->ny+2))) ] = 0;
     }
   }
 
@@ -188,8 +208,12 @@ Sist_Lin* aloca_sist(unsigned int nx, unsigned int ny){
   return sist;
 }
 
-void escreve_solucao_gnuplot(char* arq_saida, Real_t tempo_medio, unsigned int num_iter, Real_t* residuo_iter, Sist_Lin* sist){
+void escreve_solucao_gnuplot(char* arq_saida, Real_t tempo_medio, unsigned int num_iter, Real_t* residuo_iter, Sist_Lin* sist, Real_t* solucao){
   srand(time(NULL));
+  Real_t hx = 1/((sist->nx)+1); Real_t hy = 1/((sist->ny)+1);
+  Real_t x = 0;
+  Real_t y = 0;
+  
   if( arq_saida != NULL ){
     // abra o arquivo de saida
     FILE *saida = fopen(arq_saida, "w+");
@@ -203,10 +227,11 @@ void escreve_solucao_gnuplot(char* arq_saida, Real_t tempo_medio, unsigned int n
     fprintf(saida, "###########\n");
   
     // escreva os valores de x, y e u(x,y) no arquivo de saida
-    for(unsigned int i = 0; i < ((sist->nx)+2); ++i){
-      for(unsigned int j = 0; i < ((sist->ny)+2); ++i){
+    for(unsigned int i = 0; i < ((sist->nx)+2); ++i, x += hx){
+      y = 0;
+      for(unsigned int j = 0; i < ((sist->ny)+2); ++i, y += hy){
         // acessa o vetor x
-         fprintf(saida, "%lf\t%lf\t%lf\n", (Real_t)rand(), (Real_t)rand(), (Real_t)rand());
+	fprintf(saida, "%lf\t%lf\t%lf\n", x, y, solucao[ index(i,j,((sist->ny)+2)) ]);
       }
     }
     // feche o arquivo de saída
@@ -223,9 +248,10 @@ void escreve_solucao_gnuplot(char* arq_saida, Real_t tempo_medio, unsigned int n
     printf("###########\n");
   
     // escreva os valores de x, y e u(x,y) no arquivo de saida
-    for(unsigned int i = 0; i < ((sist->nx)+2); ++i){
-      for(unsigned int j = 0; i < ((sist->ny)+2); ++i){
-        printf("%lf\t%lf\t%lf\n", (Real_t)rand(), (Real_t)rand(), (Real_t)rand());
+    for(unsigned int i = 0; i < ((sist->nx)+2); ++i, x += hx){
+      y = 0;
+      for(unsigned int j = 0; i < ((sist->ny)+2); ++i, y += hy){
+        printf("%lf\t%lf\t%lf\n", x, y, solucao[ index(i,j,((sist->ny)+2)) ]);
       }
     }
   }
@@ -233,16 +259,22 @@ void escreve_solucao_gnuplot(char* arq_saida, Real_t tempo_medio, unsigned int n
 }
 
 void libera_sist(Sist_Lin* sist){
-    // desalocar o vetor b
+  // desalocar o vetor b
   free(sist->b);
-    // desalocar o sistema 
+  // desalocar o sistema 
   free(sist);
   
   return;
 }
 
-void libera_solucao(){
+void libera_solucao( Real_t* solucao ){
+  // desaloca o vetor de solucao
+  free(solucao);
   return;
+}
+
+Real_t calcula_norma_residuo(){
+  return (Real_t) rand();
 }
 
 int main(int argc, char* argv[]){
@@ -255,26 +287,29 @@ int main(int argc, char* argv[]){
   // alocar e inicializar sistema de equações 
   Sist_Lin *sistema = aloca_sist(ny, ny);
   // alocar e inicializar o vetor solução nulo
-  Real_t *x = aloca_e_inicializa_solucao( sistema );
+  Real_t *u = aloca_e_inicializa_solucao( sistema );
   // alocar e inicializar vetor de residuos
-  Real_t norma_residuo_por_iter[5] = { 4.0, 4.58, 13.57, 19.12, 5.55 };
+  Real_t *norma_residuo_por_iter = myMalloc( iter, Real_t );
+  testMalloc(norma_residuo_por_iter);
   
   // comece um for ate o numero maximo de iteracoes
   unsigned int k;
   for( k = 1; k <= iter; ++k ){
     if(rand() % 23) break;
-  }
+  
     // resolva a equacao diferencial por diferencas finitas e gaus-siedel
     // inicializa x e y com PI/(nx+1) e PI/(ny+1)
     // percorra os pontos atualizando os valores de
     // calcule o residuo para esta iteração
+    norma_residuo_por_iter[k-1] = calcula_norma_residuo();
+  }
   
   // escreve o arquivo de saída
-  escreve_solucao_gnuplot( arq_saida, 7.98, k, norma_residuo_por_iter, sistema );
+  escreve_solucao_gnuplot( arq_saida, 7.98, k, norma_residuo_por_iter, sistema, u );
   
   // libere a memoria usada para as estruturas
   libera_sist( sistema );
-  libera_solucao( x );
+  libera_solucao( u );
   //free(norma_residuo);
   
   return 0;

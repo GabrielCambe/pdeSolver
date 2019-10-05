@@ -1,6 +1,8 @@
+cFLAGS = -Wall -O0 -lm
+
 # all: compila e produz um executável chamado pdeSolver no diretório login1-login2/;
 all:
-	gcc -o pdeSolver pdeSolver.c
+	gcc -o pdeSolver pdeSolver.c $(cFLAGS)
 
 plot2d:
 	gnuplot -e "solucao='arq.dat'" pde2d.plg
