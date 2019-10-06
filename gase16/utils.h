@@ -8,9 +8,9 @@
 #ifndef _UTILS_PDESOLVER
 #define _UTILS_PDESOLVER
 
-#define myMalloc(tam, tipo) (tipo*) malloc((tam*(sizeof(tipo))))
+#define myMalloc(tam, tipo) (tipo*) malloc(((tam)*(sizeof(tipo))))
 #define testMalloc(pointer) if( pointer == NULL ) abort()
-#define index(i,j,n) ((i*n)+j)
+#define index(i,j,n) (((i)*(n))+(j))
 
 #define PI 3.14159265358979323846
 
@@ -31,8 +31,8 @@ void escreve_solucao_gnuplot( char* arq_saida, double tempo_total_GaussSiedel, u
 void aloca_sist( Sist_Lin** sist, unsigned int nx, unsigned int ny );
 void aloca_e_inicializa_solucao(  Real_t **u, Sist_Lin *sist  );
 void libera_sist( Sist_Lin** sist );
-void libera_solucao(  Real_t** solucao  );
-Real_t calcula_norma_residuo();
+void libera_vetor(  Real_t** vetor  );
+Real_t calcula_norma_residuo( Sist_Lin *sist, Real_t *u );
 
 double timestamp(void);
 

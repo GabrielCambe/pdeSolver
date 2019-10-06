@@ -15,8 +15,8 @@ void escreve_solucao_gnuplot(char* arq_saida, double tempo_total_GaussSiedel, un
         fprintf(saida, "###########\n");
         fprintf(saida, "# Tempo Método GS: %f ms.\n", (tempo_total_GaussSiedel/num_iter));
         fprintf(saida, "#\n# Norma L2 do Residuo\n");
-        for(unsigned int i = 0; i < num_iter; ++i){
-            fprintf(saida, "# i=%d: %lf\n", i+1, residuo_iter[i] );
+        for(unsigned int i = 1; i <= num_iter; ++i){
+            fprintf(saida, "# i=%d: %lf\n", i, residuo_iter[i-1] );
         }
         fprintf(saida, "###########\n");
   
@@ -25,7 +25,7 @@ void escreve_solucao_gnuplot(char* arq_saida, double tempo_total_GaussSiedel, un
             y = 0;
             for(unsigned int j = 0; j < ((sist->ny)+2); ++j, y += hy){
                 // acessa o vetor x
-	            fprintf(saida, "%lf %lf %lf\n", x, y, solucao[ index(i,j,((sist->ny)+2)) ]);
+	            fprintf(saida, "%lf %lf %lf\n", x, y, solucao[ index(i,j,(sist->ny)+2) ]);
             }
             fprintf(saida, "\n" );
         }
@@ -39,8 +39,8 @@ void escreve_solucao_gnuplot(char* arq_saida, double tempo_total_GaussSiedel, un
         printf("###########\n");
         printf("# Tempo Método GS: %f ms.\n", (tempo_total_GaussSiedel/num_iter));
         printf("#\n# Norma L2 do Residuo\n");
-        for(unsigned int i = 0; i < num_iter; ++i){
-            printf("# i=%d: %lf\n", i+1, residuo_iter[i] );
+        for(unsigned int i = 1; i <= num_iter; ++i){
+            printf("# i=%d: %lf\n", i, residuo_iter[i-1] );
         }
         printf("###########\n");
   
@@ -48,7 +48,7 @@ void escreve_solucao_gnuplot(char* arq_saida, double tempo_total_GaussSiedel, un
         for(unsigned int i = 0; i < ((sist->nx)+2); ++i, x += hx){
             y = 0;
             for(unsigned int j = 0; j < ((sist->ny)+2); ++j, y += hy){
-                printf("%lf\t%lf\t%lf\n", x, y, solucao[ index(i,j,((sist->ny)+2)) ]);
+                printf("%lf\t%lf\t%lf\n", x, y, solucao[ index(i,j,(sist->ny)+2) ]);
             }
             printf( "\n" );
         }

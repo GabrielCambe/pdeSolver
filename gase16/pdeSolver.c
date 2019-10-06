@@ -65,23 +65,30 @@ int main(int argc, char *argv[]){
 
     double tempo_inicial;
     double tempo_total_GaussSiedel = 0;
+    Real_t maior_err_aprox = 0.25;
+    Real_t err_aprox_atual = 0;
+
     // comece um for ate o numero maximo de iteracoes
     unsigned int k;
-    for( k = 1; k <= iter; ++k ){
+    for( k = 1; ((k <= iter) && maior_err_aprox >= 0.25); ++k ){
       tempo_inicial = timestamp();
 
       // resolva a equacao diferencial por diferencas finitas e gaus-siedel
-      const Real_t hx = PI/((sistema->nx)+1);
-      const Real_t hy = PI/((sistema->ny)+1);
       Real_t Uij;
       for(unsigned int i = 1; i < ((sistema->nx)+1); ++i){
-          for(unsigned int j = 0; j < ((sistema->ny)+1); ++j){
+          for(unsigned int j = 1; j < ((sistema->ny)+1); ++j){
             Uij = sistema->b[ index(i,j,((sistema->ny)+2)) ];
-            Uij += ((1/(hx²)) - (1/(2*hx)))*Ui+1j;
-            Uij += ((1/(hx²)) + (1/(2*hx)))*Ui-1j;
-            Uij += ((1/(hy²)) - (1/(2*hy)))*Uij+1;
-            Uij += ((1/(hy²)) + (1/(2*hy)))*Uij-1;
-            Uij /= ((4*PI*PI)+(2/(hx*hx))+(2/(hy*hy)));
+            Uij -= ((sistema->dInfy) * u[ index(i,j-1,(sistema->ny)+2) ]);
+            Uij -= ((sistema->dInfx) * u[ index(i-1,j,(sistema->ny)+2) ]);
+            Uij -= ((sistema->dSupy) * u[ index(i,j+1,(sistema->ny)+2) ]);
+            Uij -= ((sistema->dSupx) * u[ index(i+1,j,(sistema->ny)+2) ]);
+            Uij /= (sistema->dPrin);
+            
+            // Calcula diferença entre aproximações ||  x(k) – x(k – 1) ||
+            err_aprox_atual = fabs( Uij - u[ index(i,j,(sistema->ny)+2) ] );
+            maior_err_aprox = (err_aprox_atual > maior_err_aprox) ? (err_aprox_atual) : (maior_err_aprox);
+            
+            u[ index(i,j,(sistema->ny)+2) ] = Uij;
           }
       }
 
@@ -89,7 +96,7 @@ int main(int argc, char *argv[]){
       tempo_total_GaussSiedel += (timestamp() - tempo_inicial);
       
       // calcule o residuo para esta iteração
-      norma_residuo_por_iter[k-1] = calcula_norma_residuo();
+      norma_residuo_por_iter[k-1] = calcula_norma_residuo(sistema, u);
     }
 
     // escreve o arquivo de saída
@@ -97,7 +104,7 @@ int main(int argc, char *argv[]){
 
     // libere a memoria usada para as estruturas
     libera_sist( &sistema );
-    libera_solucao( &u );
+    libera_vetor( &u );
     free( norma_residuo_por_iter );
     norma_residuo_por_iter = NULL;
   

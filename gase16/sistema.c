@@ -7,7 +7,7 @@ void aloca_sist(Sist_Lin** sist, unsigned int nx, unsigned int ny){
   testMalloc( (*sist) );
 
   // alocar vetor b
-  (*sist)->b = myMalloc( ((nx+2)*(ny+2)), Real_t );
+  (*sist)->b = myMalloc( (nx+2)*(ny+2), Real_t );
   testMalloc( (*sist)->b );
   
   // calcular o valor dos passos
@@ -22,7 +22,7 @@ void aloca_sist(Sist_Lin** sist, unsigned int nx, unsigned int ny){
     y = 0;
     for(unsigned int j = 0; j < (ny+2); ++j, y += hy){
       // preencher o vetor b com os valores de f(x,y)
-      (*sist)->b[ index(i,j,(((*sist)->ny)+2)) ] = 4*PI*PI*( sin( 2*PI*x ) * sinh( PI*y ) + sin( 2*PI*(PI-x) ) * sinh( PI*(PI - y) ));
+      (*sist)->b[ index(i,j,((*sist)->ny)+2) ] = 4*PI*PI*( sin( 2*PI*x ) * sinh( PI*y ) + sin( 2*PI*(PI-x) ) * sinh( PI*(PI - y) ));
     }
   }
   (*sist)->nx = nx;
@@ -42,7 +42,7 @@ void aloca_sist(Sist_Lin** sist, unsigned int nx, unsigned int ny){
 void aloca_e_inicializa_solucao( Real_t **u, Sist_Lin *sist ){
     // inicializa a solução com 0 nos pontos interiores
     // e com as condições de contorno
-    (*u) = myMalloc((((sist->nx)+2)*((sist->ny)+2)), Real_t);
+    (*u) = myMalloc(((sist->nx)+2)*((sist->ny)+2), Real_t);
     testMalloc( (*u) );
     
     const Real_t hx = PI/((sist->nx)+1);
@@ -54,16 +54,16 @@ void aloca_e_inicializa_solucao( Real_t **u, Sist_Lin *sist ){
         y = 0;
         for(unsigned int j = 0; j < ((sist->ny)+2); ++j, y += hy){
             if(i == 0 || i == ((sist->nx)+1)){ // u(0,y) = 0; u(PI,y) = 0
-	            (*u)[ index(i,j,((sist->ny)+2)) ] = 0 ;
+	            (*u)[ index(i,j,(sist->ny)+2) ] = 0 ;
 	            
             }else if(j == 0){ // u(x,0) = sin( 2*PI*(PI-x) ) * sinh( PI*PI )
-	            (*u)[ index(i,j,((sist->ny)+2)) ] = sin( 2*PI*(PI-x) ) * sinh( PI*PI );
+	            (*u)[ index(i,j,(sist->ny)+2) ] = sin( 2*PI*(PI-x) ) * sinh( PI*PI );
 	            
             }else if(j == ((sist->ny)+1)){ // u(x,PI) = sin( 2*PI*x ) * sinh( PI*PI )
-	            (*u)[ index(i,j,((sist->ny)+2)) ] = sin( 2*PI*x ) * sinh( PI*PI );
+	            (*u)[ index(i,j,(sist->ny)+2) ] = sin( 2*PI*x ) * sinh( PI*PI );
 	            
             }else{
-                (*u)[ index(i,j,((sist->ny)+2)) ] = 0;
+                (*u)[ index(i,j,(sist->ny)+2) ] = 0;
             }
         }
     }
@@ -84,48 +84,45 @@ void libera_sist(Sist_Lin** sist){
 }
 
 // Libera o vetor usado como solucao no metodo
-void libera_solucao( Real_t** solucao ){
-    // desaloca o vetor de solucao
-    free((*solucao));
+void libera_vetor( Real_t** vetor ){
+    // desaloca o vetor
+    free((*vetor));
     return;
 }
 
 // Retorna a norma L2 do residuo para o metodo de Gauss Siedel
-Real_t calcula_norma_residuo(){
-    // /*!
+// /*!
     //     \brief Essa função calcula a norma L2 do resíduo de um sistema linear 
 
     //     \param SL Ponteiro para o sistema linear
     //     \param x Solução do sistema linear
     // */
-    // real_t normaL2Residuo(SistLinear_t *SL, real_t *x){
-    //     unsigned int tam = SL->n;
-    //     real_t *res = mymalloc(tam, real_t);
-    //     testmalloc(res);  
-  
-    //     //calcula resíduo
-    //     for(int i = 0; i < tam; i++){
-    //         res[i] = 0;
-    //         for(int j = 0; j < tam; j++){
-    //             res[i] += SL->A[index(i,j,tam)] * x[j];
-    //         }
-    //     }
-    //     real_t norma = 0;
-    //     real_t diff = 0;
-    //     //calcula norma do vetor ao residuo
-    //     for(int i = 0; i < tam; i++){
-    //         for(int j = 0; j < tam; j++){
-    //             diff = fabs(res[i] - SL->b[i]);
-    //             norma += diff * diff;
-    //         }
-    //     }
+Real_t calcula_norma_residuo(Sist_Lin *sist, Real_t *u){
 
-    //     norma = sqrt(norma);
+    Real_t *residuo = myMalloc(((sist->nx)+2)*((sist->ny)+2), Real_t);
+    testMalloc(residuo);
 
-    //     free(res);
-    //     return norma;
-    // }
-    return (Real_t) rand();
+    Real_t norma;
+
+    // calcula norma resíduo
+    for(unsigned int i = 1; i < ((sist->nx)+1); ++i){
+        for(unsigned int j = 1; j < ((sist->ny)+1); ++j){
+            residuo[ index(i,j,(sist->ny)+2) ] = (sist->b[ index(i,j,(sist->ny)+2) ]);
+            residuo[ index(i,j,(sist->ny)+2) ] -= ((sist->dInfy) * u[ index(i,j-1,(sist->ny)+2) ]);  
+            residuo[ index(i,j,(sist->ny)+2) ] -= ((sist->dInfx) * u[ index(i-1,j,(sist->ny)+2) ]);
+            residuo[ index(i,j,(sist->ny)+2) ] -= ((sist->dSupy) * u[ index(i,j+1,(sist->ny)+2) ]);
+            residuo[ index(i,j,(sist->ny)+2) ] -= ((sist->dSupx) * u[ index(i+1,j,(sist->ny)+2) ]);
+            residuo[ index(i,j,(sist->ny)+2) ] -= (sist->dPrin) * u[ index(i,j,(sist->ny)+2) ];
+            // calcula norma do vetor de residuo
+            norma += residuo[ index(i,j,(sist->ny)+2) ] * residuo[ index(i,j,(sist->ny)+2) ];
+        }
+    }
+
+    norma = sqrt(norma);
+
+    libera_vetor(&residuo);
+
+    return norma;
 }
 
 // Retorna tempo em milisegundos
