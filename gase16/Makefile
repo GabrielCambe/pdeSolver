@@ -1,23 +1,25 @@
 cFLAGS = -Wall -O0 -lm -g
+objFLAGS = $(cFLAGS) -c
 
 # all: compila e produz um executável chamado pdeSolver no diretório login1-login2/;
 all: leitura escrita sistema
 	gcc -o pdeSolver  leitura.o escrita.o sistema.o pdeSolver.c $(cFLAGS)
 
 leitura:
-	gcc -c leitura.c
+	gcc $(objFLAGS) leitura.c 
 
 escrita:
-	gcc -c escrita.c
+	gcc $(objFLAGS) escrita.c
 
 sistema:
-	gcc -c sistema.c
+	gcc $(objFLAGS) sistema.c
 
 plot2d:
-	gnuplot -e "solucao='arq.dat'" pde2d.plg
+	gnuplot -e "solucao='arq.dat';" pde2d.plg
 
 plot3d:
-	gnuplot -e "solucao='arq.dat'" pde3d.plg
+	NX=$$(cat nx) && NY=$$(cat ny) && \
+	gnuplot -c "pde3d.plg" "arq.dat" $${NX} $${NY}
 
 # clean: remove todos os arquivos temporários e os arquivos gerados pelo Makefile (*.o, executável, etc.).
 clean:

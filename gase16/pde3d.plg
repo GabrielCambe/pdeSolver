@@ -1,12 +1,13 @@
+reset
+#set print "-"
 set title "Solução númerica da PDE"    
+set xlabel "X"    
+set ylabel "Y" 
 
-# set xlabel ""    
-# set ylabel "" 
-
-# COLOQUE O DOMINIO CORRETO EM X E Y
-# TENTE FAZER A MESH SER DO TAMANHO DOS N'S PASSADOS
-
-set dgrid3d 30,30
+set autoscale
+set samples ARG2, ARG3
+set isosamples ARG2, ARG3
+set grid
 set hidden3d
-splot solucao u 1:2:3 with lines
+splot ARG1 using 1:2:3 w lines
 pause -1 "Pressione enter para continuar!"

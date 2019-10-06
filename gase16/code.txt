@@ -21,41 +21,6 @@ real_t kahanSum( real_t *input, unsigned int tam ){
 }
 
 /*!
-  \brief Essa função calcula a norma L2 do resíduo de um sistema linear 
-
-  \param SL Ponteiro para o sistema linear
-  \param x Solução do sistema linear
-*/
-real_t normaL2Residuo(SistLinear_t *SL, real_t *x)
-{
-  unsigned int tam = SL->n;
-  real_t *res = mymalloc(tam, real_t);
-  testmalloc(res);  
-  
-  //calcula resíduo
-  for(int i = 0; i < tam; i++){
-    res[i] = 0;
-    for(int j = 0; j < tam; j++){
-      res[i] += SL->A[index(i,j,tam)] * x[j];
-    }
-  }
-  real_t norma = 0;
-  real_t diff = 0;
-  //calcula norma do vetor ao residuo
-  for(int i = 0; i < tam; i++){
-    for(int j = 0; j < tam; j++){
-      diff = fabs(res[i] - SL->b[i]);
-      norma += diff * diff;
-    }
-  }
-
-  norma = sqrt(norma);
-
-  free(res);
-  return norma;
-}
-
-/*!
   \brief Método de Gauss-Seidel
 
   \param SL Ponteiro para o sistema linear
@@ -180,4 +145,29 @@ double eq_diff(double x){ // u = u(x,y)
 
 
 
-void gaussSeidel (struct t_SistLinear3Diag SL, double *x, double erro) {double norma, diff, xk;int k = 1, i;do {// primeira equação fora do laço    i = 0;    xk = (SL->b[i] – SL→ds[i]*x[i+1]) / SL->dp[i];    norma = fabs(xk – x[0]);    x[i] = xk;// equações centraisfor (i=1; i<SL->n-1; ++i) {      xk = (SL->b[i] - SL->ds[i]*x[i+1]- SL->di[i]*x[i-1]) / SL->dp[i];// Calcula norma ||  x(k) – x(k – 1) ||      diff = fabs(xk – x[i]);      norma = (diff > norma) ? (diff) : (norma);x[i] = xk;    }// ultima equação fora do laço    xk = (SL->b[i] - SL->di[i]*x[i-1]) / SL->dp[i];    diff = fabs(xk – x[i]);    norma = (diff > norma) ? (diff) : (norma);x[i] = xk;    ++k;   } while (norma > erro && k < MAXIT) ;}
+void gaussSeidel (struct t_SistLinear3Diag SL, double *x, double erro){
+  double norma, diff, xk;
+  int k = 1, i;
+  do {
+    // primeira equação fora do laço
+    i = 0;
+    xk = (SL->b[i] – SL→ds[i]*x[i+1]) / SL->dp[i];
+    norma = fabs(xk – x[0]);
+    x[i] = xk;
+    
+    // equações centrais
+    for (i=1; i<SL->n-1; ++i) {
+      xk = (SL->b[i] - SL->ds[i]*x[i+1]- SL->di[i]*x[i-1]) / SL->dp[i];
+      // Calcula norma ||  x(k) – x(k – 1) ||
+      diff = fabs(xk – x[i]);
+      norma = (diff > norma) ? (diff) : (norma);
+      x[i] = xk;
+    }
+    
+    // ultima equação fora do laço
+    xk = (SL->b[i] - SL->di[i]*x[i-1]) / SL->dp[i];
+    diff = fabs(xk – x[i]);
+    norma = (diff > norma) ? (diff) : (norma);x[i] = xk;
+    ++k;   
+  
+  } while (norma > erro && k < MAXIT) ;}

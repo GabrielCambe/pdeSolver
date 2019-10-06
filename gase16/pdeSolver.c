@@ -42,41 +42,69 @@ Além disso, no início do arquivo, deve constar sob a forma de comentários do 
 
 #include "utils.h"
 
-int main(int argc, char* argv[]){
+int main(int argc, char *argv[]){
+  srand(time(NULL));
+
   unsigned int nx, ny, iter;
-  char* arq_saida;
+  char *arq_saida;
 
   // ler entradas da linha de comando
-  le_comandos( argc, argv, &nx, &ny, &iter, &arq_saida );
+  if( le_comandos( argc, argv, &nx, &ny, &iter, &arq_saida ) != (-1)){
 
-  // alocar e inicializar sistema de equações 
-  Sist_Lin *sistema = aloca_sist(ny, ny);
-  // alocar e inicializar o vetor solução nulo
-  Real_t *u = aloca_e_inicializa_solucao( sistema );
-  // alocar e inicializar vetor de residuos
-  Real_t *norma_residuo_por_iter = myMalloc( iter, Real_t );
-  testMalloc(norma_residuo_por_iter);
+    // alocar e inicializar sistema de equações 
+    Sist_Lin *sistema;
+    aloca_sist( &sistema, ny, ny );
+
+    // alocar e inicializar o vetor solução nulo
+    Real_t *u;
+    aloca_e_inicializa_solucao( &u, sistema );
+
+    // alocar e inicializar vetor de residuos
+    Real_t *norma_residuo_por_iter = myMalloc( iter, Real_t );
+    testMalloc(norma_residuo_por_iter);
+
+    double tempo_inicial;
+    double tempo_total_GaussSiedel = 0;
+    // comece um for ate o numero maximo de iteracoes
+    unsigned int k;
+    for( k = 1; k <= iter; ++k ){
+      tempo_inicial = timestamp();
+
+      // resolva a equacao diferencial por diferencas finitas e gaus-siedel
+      const Real_t hx = PI/((sistema->nx)+1);
+      const Real_t hy = PI/((sistema->ny)+1);
+      Real_t Uij;
+      for(unsigned int i = 1; i < ((sistema->nx)+1); ++i){
+          for(unsigned int j = 0; j < ((sistema->ny)+1); ++j){
+            Uij = sistema->b[ index(i,j,((sistema->ny)+2)) ];
+            Uij += ((1/(hx²)) - (1/(2*hx)))*Ui+1j;
+            Uij += ((1/(hx²)) + (1/(2*hx)))*Ui-1j;
+            Uij += ((1/(hy²)) - (1/(2*hy)))*Uij+1;
+            Uij += ((1/(hy²)) + (1/(2*hy)))*Uij-1;
+            Uij /= ((4*PI*PI)+(2/(hx*hx))+(2/(hy*hy)));
+          }
+      }
+
+      // calcule o tempo decorrido e atualize a variavel de tempo
+      tempo_total_GaussSiedel += (timestamp() - tempo_inicial);
+      
+      // calcule o residuo para esta iteração
+      norma_residuo_por_iter[k-1] = calcula_norma_residuo();
+    }
+
+    // escreve o arquivo de saída
+    escreve_solucao_gnuplot( arq_saida, tempo_total_GaussSiedel, k, norma_residuo_por_iter, sistema, u );
+
+    // libere a memoria usada para as estruturas
+    libera_sist( &sistema );
+    libera_solucao( &u );
+    free( norma_residuo_por_iter );
+    norma_residuo_por_iter = NULL;
   
-  // comece um for ate o numero maximo de iteracoes
-  unsigned int k;
-  for( k = 1; k <= iter; ++k ){
-    if(rand() % 23) break;
-  
-    // resolva a equacao diferencial por diferencas finitas e gaus-siedel
-    // inicializa x e y com PI/(nx+1) e PI/(ny+1)
-    // percorra os pontos atualizando os valores de
-    // calcule o residuo para esta iteração
-    norma_residuo_por_iter[k-1] = calcula_norma_residuo();
+  }else{
+    return (-1);
   }
-  
-  // escreve o arquivo de saída
-  escreve_solucao_gnuplot( arq_saida, 7.98, k, norma_residuo_por_iter, sistema, u );
-  
-  // libere a memoria usada para as estruturas
-  libera_sist( sistema );
-  libera_solucao( u );
-  free( norma_residuo_por_iter );
-  
+
   return 0;
 }
 
