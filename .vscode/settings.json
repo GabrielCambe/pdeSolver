@@ -6,6 +6,14 @@
         "functional": "cpp",
         "tuple": "cpp",
         "core": "cpp",
-        "*.txx": "cpp"
+        "*.txx": "cpp",
+        "math.h": "c",
+        "deque": "cpp",
+        "list": "cpp",
+        "string": "cpp",
+        "vector": "cpp",
+        "iterator": "cpp",
+        "string_view": "cpp",
+        "utils.h": "c"
     }
 }

@@ -1,0 +1,4 @@
+<map id="calcula_norma_residuo" name="calcula_norma_residuo">
+<area shape="rect" id="node1" title="Essa função calcula a norma L2 do resíduo de um sistema linear." alt="" coords="5,5,160,32"/>
+<area shape="rect" id="node2" href="$utils_8h.html#a505eca46657a8a2b6ffd672945598ae2" title="Essa função chama a função free() para o vetor passado como argumento." alt="" coords="208,5,297,32"/>
+</map>

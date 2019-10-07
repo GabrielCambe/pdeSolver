@@ -1,0 +1,809 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.17"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>PDE Solver: Referência do Arquivo inc/utils.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">PDE Solver
+   &#160;<span id="projectnumber">1.0</span>
+   </div>
+   <div id="projectbrief">Solução Numérica de uma Equação Diferencial Parcial Elíptica de Segunda Ordem.</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Gerado por Doxygen 1.8.17 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Busca');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','Busca');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_bfccd401955b95cf8c75461437045ac0.html">inc</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#nested-classes">Estruturas de Dados</a> &#124;
+<a href="#define-members">Definições e Macros</a> &#124;
+<a href="#typedef-members">Definições de Tipos</a> &#124;
+<a href="#func-members">Funções</a>  </div>
+  <div class="headertitle">
+<div class="title">Referência do Arquivo utils.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &lt;stdio.h&gt;</code><br />
+<code>#include &lt;math.h&gt;</code><br />
+<code>#include &lt;string.h&gt;</code><br />
+<code>#include &lt;stdlib.h&gt;</code><br />
+<code>#include &lt;time.h&gt;</code><br />
+<code>#include &lt;sys/time.h&gt;</code><br />
+</div><div class="textblock"><div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Gráfico de dependência de inclusões para utils.h:</div>
+<div id="dynsection-0-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-0-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="utils_8h__incl.png" border="0" usemap="#inc_2utils_8h" alt=""/></div>
+<map name="inc_2utils_8h" id="inc_2utils_8h">
+<area shape="rect" title=" " alt="" coords="215,5,294,32"/>
+<area shape="rect" title=" " alt="" coords="5,80,67,107"/>
+<area shape="rect" title=" " alt="" coords="91,80,154,107"/>
+<area shape="rect" title=" " alt="" coords="178,80,243,107"/>
+<area shape="rect" title=" " alt="" coords="268,80,332,107"/>
+<area shape="rect" title=" " alt="" coords="356,80,415,107"/>
+<area shape="rect" title=" " alt="" coords="439,80,521,107"/>
+</map>
+</div>
+</div><div class="textblock"><div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-1-trigger" src="closed.png" alt="+"/> Este grafo mostra quais arquivos estão direta ou indiretamente relacionados com esse arquivo:</div>
+<div id="dynsection-1-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-1-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="utils_8h__dep__incl.png" border="0" usemap="#inc_2utils_8hdep" alt=""/></div>
+<map name="inc_2utils_8hdep" id="inc_2utils_8hdep">
+<area shape="rect" title=" " alt="" coords="249,5,328,32"/>
+<area shape="rect" href="escrita_8c.html" title=" " alt="" coords="5,80,100,107"/>
+<area shape="rect" href="leitura_8c.html" title=" " alt="" coords="125,80,215,107"/>
+<area shape="rect" href="metodo_8c.html" title=" " alt="" coords="239,80,338,107"/>
+<area shape="rect" href="pdeSolver_8c.html" title=" " alt="" coords="363,80,476,107"/>
+<area shape="rect" href="sistema_8c.html" title=" " alt="" coords="501,80,602,107"/>
+</map>
+</div>
+</div>
+<p><a href="utils_8h_source.html">Vá para o código-fonte desse arquivo.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
+Estruturas de Dados</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structSist__Lin.html">Sist_Lin</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Essa estrutura anônima foi definida para o tipo <a class="el" href="structSist__Lin.html" title="Essa estrutura anônima foi definida para o tipo Sist_Lin, que representa o sistema linear resultante ...">Sist_Lin</a>, que representa o sistema linear resultante da discretização da equação diferencial.  <a href="structSist__Lin.html#details">Mais...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
+Definições e Macros</h2></td></tr>
+<tr class="memitem:a14933e96752ba4d635c99d03605f69c8"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="utils_8h.html#a14933e96752ba4d635c99d03605f69c8">myMalloc</a>(tam,  tipo)&#160;&#160;&#160;(tipo*) malloc(((tam)*(sizeof(tipo))))</td></tr>
+<tr class="separator:a14933e96752ba4d635c99d03605f69c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af596f72ea632cacabfde755a541272f8"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="utils_8h.html#af596f72ea632cacabfde755a541272f8">testMalloc</a>(pointer)&#160;&#160;&#160;if( pointer == NULL ) abort()</td></tr>
+<tr class="separator:af596f72ea632cacabfde755a541272f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9ad7931c489738fde10d54262f89b40d"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="utils_8h.html#a9ad7931c489738fde10d54262f89b40d">index</a>(i,  j,  n)&#160;&#160;&#160;(((i)*(n))+(j))</td></tr>
+<tr class="separator:a9ad7931c489738fde10d54262f89b40d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afba4cc2bec8eb2d6fc2e4b48587b65d0"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="utils_8h.html#afba4cc2bec8eb2d6fc2e4b48587b65d0">MAXERR</a>&#160;&#160;&#160;6.0E-5</td></tr>
+<tr class="separator:afba4cc2bec8eb2d6fc2e4b48587b65d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a598a3330b3c21701223ee0ca14316eca"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="utils_8h.html#a598a3330b3c21701223ee0ca14316eca">PI</a>&#160;&#160;&#160;3.14159265358979323846</td></tr>
+<tr class="separator:a598a3330b3c21701223ee0ca14316eca"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
+Definições de Tipos</h2></td></tr>
+<tr class="memitem:a525236e689afeb8b40df6cd2f99e279f"><td class="memItemLeft" align="right" valign="top">typedef double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="utils_8h.html#a525236e689afeb8b40df6cd2f99e279f">Real_t</a></td></tr>
+<tr class="separator:a525236e689afeb8b40df6cd2f99e279f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Funções</h2></td></tr>
+<tr class="memitem:a65d4a29c6d07d5644593a5ace9b50323"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="utils_8h.html#a65d4a29c6d07d5644593a5ace9b50323">le_comandos</a> (int argc, char *argv[], unsigned int *nx, unsigned int *ny, unsigned int *iter, char **arq_saida)</td></tr>
+<tr class="memdesc:a65d4a29c6d07d5644593a5ace9b50323"><td class="mdescLeft">&#160;</td><td class="mdescRight">Essa função valida os comandos passados como argumento.  <a href="utils_8h.html#a65d4a29c6d07d5644593a5ace9b50323">Mais...</a><br /></td></tr>
+<tr class="separator:a65d4a29c6d07d5644593a5ace9b50323"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6c015ebea7f16b18953e03a899af8ee8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="utils_8h.html#a6c015ebea7f16b18953e03a899af8ee8">escreve_solucao_gnuplot</a> (char *arq_saida, double tempo_total_GaussSiedel, unsigned int num_iter, <a class="el" href="utils_8h.html#a525236e689afeb8b40df6cd2f99e279f">Real_t</a> *residuo_iter, <a class="el" href="structSist__Lin.html">Sist_Lin</a> *sist, <a class="el" href="utils_8h.html#a525236e689afeb8b40df6cd2f99e279f">Real_t</a> *solucao)</td></tr>
+<tr class="memdesc:a6c015ebea7f16b18953e03a899af8ee8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Essa função escreve em um arquivo os valores calculados pelo método de Gauss-Siedel. Os valores de u(x,y) são postos junto ao seus respectivos x e y num arquivo do tipo grid do gnuplot. Também são escritos os comentários acerca da execução do programa, o resíduo por iteração e o tempo médio de execução do método.  <a href="utils_8h.html#a6c015ebea7f16b18953e03a899af8ee8">Mais...</a><br /></td></tr>
+<tr class="separator:a6c015ebea7f16b18953e03a899af8ee8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a70fb17257b703ace1dc73da9bb605bd1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="utils_8h.html#a70fb17257b703ace1dc73da9bb605bd1">aloca_sist</a> (<a class="el" href="structSist__Lin.html">Sist_Lin</a> **sist, unsigned int nx, unsigned int ny)</td></tr>
+<tr class="memdesc:a70fb17257b703ace1dc73da9bb605bd1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Essa função aloca as estruturas de dados que compôem um sistema linear no programa. Constituído basicamente dos membros da struct <a class="el" href="structSist__Lin.html" title="Essa estrutura anônima foi definida para o tipo Sist_Lin, que representa o sistema linear resultante ...">Sist_Lin</a>, essa função executa um malloc para o vetor b. Ela também o preenche com os valores de f(x,y).  <a href="utils_8h.html#a70fb17257b703ace1dc73da9bb605bd1">Mais...</a><br /></td></tr>
+<tr class="separator:a70fb17257b703ace1dc73da9bb605bd1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abb635c44284dd8c1966c2fc42e0899a7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="utils_8h.html#abb635c44284dd8c1966c2fc42e0899a7">aloca_e_inicializa_solucao</a> (<a class="el" href="utils_8h.html#a525236e689afeb8b40df6cd2f99e279f">Real_t</a> **u, <a class="el" href="structSist__Lin.html">Sist_Lin</a> *sist)</td></tr>
+<tr class="memdesc:abb635c44284dd8c1966c2fc42e0899a7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Essa função aloca o vetor solução u(x,y) e o inicializa. Esse vetor representa a região do plano para a qual se quer resolver a equação diferencial. O vetor é preenchido com zeros nos seus pontos internos e com as condições de contorno nas bordas da região. No caso da equação do trabalho a região e as cndições eram: O dominio D = [0, PI] x [0, PI], onde: u(x,0) = sin( 2*PI*(PI-x) ) * sinh( PI*PI ) u(x,PI) = sin( 2*PI*x ) * sinh( PI*PI ) u(0,y) = 0 u(PI,y) = 0.  <a href="utils_8h.html#abb635c44284dd8c1966c2fc42e0899a7">Mais...</a><br /></td></tr>
+<tr class="separator:abb635c44284dd8c1966c2fc42e0899a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aded5cdb03cd13ff40e542da36e2d61bc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="utils_8h.html#aded5cdb03cd13ff40e542da36e2d61bc">libera_sist</a> (<a class="el" href="structSist__Lin.html">Sist_Lin</a> **sist)</td></tr>
+<tr class="memdesc:aded5cdb03cd13ff40e542da36e2d61bc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Essa função libera o vetor b do um sistema linear passado como argumento e depois libera o proprio sistema.  <a href="utils_8h.html#aded5cdb03cd13ff40e542da36e2d61bc">Mais...</a><br /></td></tr>
+<tr class="separator:aded5cdb03cd13ff40e542da36e2d61bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a505eca46657a8a2b6ffd672945598ae2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="utils_8h.html#a505eca46657a8a2b6ffd672945598ae2">libera_vetor</a> (<a class="el" href="utils_8h.html#a525236e689afeb8b40df6cd2f99e279f">Real_t</a> **vetor)</td></tr>
+<tr class="memdesc:a505eca46657a8a2b6ffd672945598ae2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Essa função chama a função free() para o vetor passado como argumento.  <a href="utils_8h.html#a505eca46657a8a2b6ffd672945598ae2">Mais...</a><br /></td></tr>
+<tr class="separator:a505eca46657a8a2b6ffd672945598ae2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac743d8dc6f2a624f75ed8eb3f629f8b1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="utils_8h.html#ac743d8dc6f2a624f75ed8eb3f629f8b1">gaussSiedel</a> (<a class="el" href="structSist__Lin.html">Sist_Lin</a> **sistema, <a class="el" href="utils_8h.html#a525236e689afeb8b40df6cd2f99e279f">Real_t</a> **u)</td></tr>
+<tr class="memdesc:ac743d8dc6f2a624f75ed8eb3f629f8b1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Implementação do método de Gauss-Siedel para a equação diferencial apresentada.  <a href="utils_8h.html#ac743d8dc6f2a624f75ed8eb3f629f8b1">Mais...</a><br /></td></tr>
+<tr class="separator:ac743d8dc6f2a624f75ed8eb3f629f8b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab1978044b779fd8ec45bcd44c8d91766"><td class="memItemLeft" align="right" valign="top"><a class="el" href="utils_8h.html#a525236e689afeb8b40df6cd2f99e279f">Real_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="utils_8h.html#ab1978044b779fd8ec45bcd44c8d91766">calcula_norma_residuo</a> (<a class="el" href="structSist__Lin.html">Sist_Lin</a> *sist, <a class="el" href="utils_8h.html#a525236e689afeb8b40df6cd2f99e279f">Real_t</a> *u)</td></tr>
+<tr class="memdesc:ab1978044b779fd8ec45bcd44c8d91766"><td class="mdescLeft">&#160;</td><td class="mdescRight">Essa função calcula a norma L2 do resíduo de um sistema linear.  <a href="utils_8h.html#ab1978044b779fd8ec45bcd44c8d91766">Mais...</a><br /></td></tr>
+<tr class="separator:ab1978044b779fd8ec45bcd44c8d91766"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad1f75d4b6d05731f71dd8fe6ee54bfeb"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="utils_8h.html#ad1f75d4b6d05731f71dd8fe6ee54bfeb">timestamp</a> (void)</td></tr>
+<tr class="memdesc:ad1f75d4b6d05731f71dd8fe6ee54bfeb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Função disponibilizada pelos professores para a medição de tempo.  <a href="utils_8h.html#ad1f75d4b6d05731f71dd8fe6ee54bfeb">Mais...</a><br /></td></tr>
+<tr class="separator:ad1f75d4b6d05731f71dd8fe6ee54bfeb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">Definições e macros</h2>
+<a id="a9ad7931c489738fde10d54262f89b40d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9ad7931c489738fde10d54262f89b40d">&#9670;&nbsp;</a></span>index</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define index</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">i, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">j, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">n&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td>&#160;&#160;&#160;(((i)*(n))+(j))</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="afba4cc2bec8eb2d6fc2e4b48587b65d0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afba4cc2bec8eb2d6fc2e4b48587b65d0">&#9670;&nbsp;</a></span>MAXERR</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define MAXERR&#160;&#160;&#160;6.0E-5</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a14933e96752ba4d635c99d03605f69c8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a14933e96752ba4d635c99d03605f69c8">&#9670;&nbsp;</a></span>myMalloc</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define myMalloc</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">tam, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">tipo&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td>&#160;&#160;&#160;(tipo*) malloc(((tam)*(sizeof(tipo))))</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a598a3330b3c21701223ee0ca14316eca"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a598a3330b3c21701223ee0ca14316eca">&#9670;&nbsp;</a></span>PI</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PI&#160;&#160;&#160;3.14159265358979323846</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="af596f72ea632cacabfde755a541272f8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af596f72ea632cacabfde755a541272f8">&#9670;&nbsp;</a></span>testMalloc</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define testMalloc</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">pointer</td><td>)</td>
+          <td>&#160;&#160;&#160;if( pointer == NULL ) abort()</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Definições dos tipos</h2>
+<a id="a525236e689afeb8b40df6cd2f99e279f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a525236e689afeb8b40df6cd2f99e279f">&#9670;&nbsp;</a></span>Real_t</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double <a class="el" href="utils_8h.html#a525236e689afeb8b40df6cd2f99e279f">Real_t</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Defino esse tipo para facilitar mudanças posteriores. Por exemplo, mudar a precisão de todas as funções para float. </p>
+
+</div>
+</div>
+<h2 class="groupheader">Funções</h2>
+<a id="abb635c44284dd8c1966c2fc42e0899a7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abb635c44284dd8c1966c2fc42e0899a7">&#9670;&nbsp;</a></span>aloca_e_inicializa_solucao()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void aloca_e_inicializa_solucao </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="utils_8h.html#a525236e689afeb8b40df6cd2f99e279f">Real_t</a> **&#160;</td>
+          <td class="paramname"><em>u</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structSist__Lin.html">Sist_Lin</a> *&#160;</td>
+          <td class="paramname"><em>sist</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Essa função aloca o vetor solução u(x,y) e o inicializa. Esse vetor representa a região do plano para a qual se quer resolver a equação diferencial. O vetor é preenchido com zeros nos seus pontos internos e com as condições de contorno nas bordas da região. No caso da equação do trabalho a região e as cndições eram: O dominio D = [0, PI] x [0, PI], onde: u(x,0) = sin( 2*PI*(PI-x) ) * sinh( PI*PI ) u(x,PI) = sin( 2*PI*x ) * sinh( PI*PI ) u(0,y) = 0 u(PI,y) = 0. </p>
+<dl class="params"><dt>Parâmetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">sist</td><td>Ponteiro para o sistema que representa a equação diferencial. </td></tr>
+    <tr><td class="paramname">u</td><td>Vetor solução do sistema. </td></tr>
+  </table>
+  </dd>
+</dl>
+<div id="dynsection-2" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-2-trigger" src="closed.png" alt="+"/> Esse é o diagrama das funções que utilizam essa função:</div>
+<div id="dynsection-2-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-2-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="utils_8h_abb635c44284dd8c1966c2fc42e0899a7_icgraph.png" border="0" usemap="#utils_8h_abb635c44284dd8c1966c2fc42e0899a7_icgraph" alt=""/></div>
+<map name="utils_8h_abb635c44284dd8c1966c2fc42e0899a7_icgraph" id="utils_8h_abb635c44284dd8c1966c2fc42e0899a7_icgraph">
+<area shape="rect" title="Essa função aloca o vetor solução u(x,y) e o inicializa. Esse vetor representa a região do plano para..." alt="" coords="104,5,228,47"/>
+<area shape="rect" href="pdeSolver_8c.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="5,13,56,39"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a70fb17257b703ace1dc73da9bb605bd1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a70fb17257b703ace1dc73da9bb605bd1">&#9670;&nbsp;</a></span>aloca_sist()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void aloca_sist </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structSist__Lin.html">Sist_Lin</a> **&#160;</td>
+          <td class="paramname"><em>sist</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned int&#160;</td>
+          <td class="paramname"><em>nx</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned int&#160;</td>
+          <td class="paramname"><em>ny</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Essa função aloca as estruturas de dados que compôem um sistema linear no programa. Constituído basicamente dos membros da struct <a class="el" href="structSist__Lin.html" title="Essa estrutura anônima foi definida para o tipo Sist_Lin, que representa o sistema linear resultante ...">Sist_Lin</a>, essa função executa um malloc para o vetor b. Ela também o preenche com os valores de f(x,y). </p>
+<dl class="params"><dt>Parâmetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">sist</td><td>Ponteiro para o sistema que representa a equação diferencial. </td></tr>
+    <tr><td class="paramname">nx</td><td>Um inteiro sem sinal, o número de passos na dimensão x da região onde resolveremos a equação diferencial. </td></tr>
+    <tr><td class="paramname">ny</td><td>Um inteiro sem sinal, o número de passos na dimensão y da região onde resolveremos a equação diferencial. </td></tr>
+  </table>
+  </dd>
+</dl>
+<div id="dynsection-3" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-3-trigger" src="closed.png" alt="+"/> Esse é o diagrama das funções que utilizam essa função:</div>
+<div id="dynsection-3-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-3-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="utils_8h_a70fb17257b703ace1dc73da9bb605bd1_icgraph.png" border="0" usemap="#utils_8h_a70fb17257b703ace1dc73da9bb605bd1_icgraph" alt=""/></div>
+<map name="utils_8h_a70fb17257b703ace1dc73da9bb605bd1_icgraph" id="utils_8h_a70fb17257b703ace1dc73da9bb605bd1_icgraph">
+<area shape="rect" title="Essa função aloca as estruturas de dados que compôem um sistema linear no programa...." alt="" coords="104,5,185,32"/>
+<area shape="rect" href="pdeSolver_8c.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="5,5,56,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="ab1978044b779fd8ec45bcd44c8d91766"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab1978044b779fd8ec45bcd44c8d91766">&#9670;&nbsp;</a></span>calcula_norma_residuo()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="utils_8h.html#a525236e689afeb8b40df6cd2f99e279f">Real_t</a> calcula_norma_residuo </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structSist__Lin.html">Sist_Lin</a> *&#160;</td>
+          <td class="paramname"><em>sist</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="utils_8h.html#a525236e689afeb8b40df6cd2f99e279f">Real_t</a> *&#160;</td>
+          <td class="paramname"><em>u</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Essa função calcula a norma L2 do resíduo de um sistema linear. </p>
+<dl class="params"><dt>Parâmetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">sist</td><td>Ponteiro para o sistema que representa a equação diferencial. </td></tr>
+    <tr><td class="paramname">u</td><td>Vetor solução do sistema. </td></tr>
+  </table>
+  </dd>
+</dl>
+<div id="dynsection-4" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-4-trigger" src="closed.png" alt="+"/> Este é o diagrama das funções utilizadas por essa função:</div>
+<div id="dynsection-4-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-4-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="utils_8h_ab1978044b779fd8ec45bcd44c8d91766_cgraph.png" border="0" usemap="#utils_8h_ab1978044b779fd8ec45bcd44c8d91766_cgraph" alt=""/></div>
+<map name="utils_8h_ab1978044b779fd8ec45bcd44c8d91766_cgraph" id="utils_8h_ab1978044b779fd8ec45bcd44c8d91766_cgraph">
+<area shape="rect" title="Essa função calcula a norma L2 do resíduo de um sistema linear." alt="" coords="5,5,160,32"/>
+<area shape="rect" href="utils_8h.html#a505eca46657a8a2b6ffd672945598ae2" title="Essa função chama a função free() para o vetor passado como argumento." alt="" coords="208,5,297,32"/>
+</map>
+</div>
+<div id="dynsection-5" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-5-trigger" src="closed.png" alt="+"/> Esse é o diagrama das funções que utilizam essa função:</div>
+<div id="dynsection-5-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-5-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="utils_8h_ab1978044b779fd8ec45bcd44c8d91766_icgraph.png" border="0" usemap="#utils_8h_ab1978044b779fd8ec45bcd44c8d91766_icgraph" alt=""/></div>
+<map name="utils_8h_ab1978044b779fd8ec45bcd44c8d91766_icgraph" id="utils_8h_ab1978044b779fd8ec45bcd44c8d91766_icgraph">
+<area shape="rect" title="Essa função calcula a norma L2 do resíduo de um sistema linear." alt="" coords="104,5,259,32"/>
+<area shape="rect" href="pdeSolver_8c.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="5,5,56,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a6c015ebea7f16b18953e03a899af8ee8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6c015ebea7f16b18953e03a899af8ee8">&#9670;&nbsp;</a></span>escreve_solucao_gnuplot()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void escreve_solucao_gnuplot </td>
+          <td>(</td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>arq_saida</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>tempo_total_GaussSiedel</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned int&#160;</td>
+          <td class="paramname"><em>num_iter</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="utils_8h.html#a525236e689afeb8b40df6cd2f99e279f">Real_t</a> *&#160;</td>
+          <td class="paramname"><em>residuo_iter</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structSist__Lin.html">Sist_Lin</a> *&#160;</td>
+          <td class="paramname"><em>sist</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="utils_8h.html#a525236e689afeb8b40df6cd2f99e279f">Real_t</a> *&#160;</td>
+          <td class="paramname"><em>solucao</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Essa função escreve em um arquivo os valores calculados pelo método de Gauss-Siedel. Os valores de u(x,y) são postos junto ao seus respectivos x e y num arquivo do tipo grid do gnuplot. Também são escritos os comentários acerca da execução do programa, o resíduo por iteração e o tempo médio de execução do método. </p>
+<dl class="params"><dt>Parâmetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">arq_saida</td><td>String que contém o nome do arquivo de saída. </td></tr>
+    <tr><td class="paramname">tempo_total_GaussSiedel</td><td>Um double com o valor do somatório dos tempos de cada iteração executada do método. </td></tr>
+    <tr><td class="paramname">num_iter</td><td>Um inteiro com o número de iterações feitas na execução de gaussSiedel. </td></tr>
+    <tr><td class="paramname">residuo_iter</td><td>Um vetor de tipo Real_t, os resíduos para cada iteração. </td></tr>
+    <tr><td class="paramname">sist</td><td>Ponteiro para o sistema que representa a equação diferencial. </td></tr>
+    <tr><td class="paramname">solucao</td><td>Vetor solução do sistema. </td></tr>
+  </table>
+  </dd>
+</dl>
+<div id="dynsection-6" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-6-trigger" src="closed.png" alt="+"/> Esse é o diagrama das funções que utilizam essa função:</div>
+<div id="dynsection-6-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-6-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="utils_8h_a6c015ebea7f16b18953e03a899af8ee8_icgraph.png" border="0" usemap="#utils_8h_a6c015ebea7f16b18953e03a899af8ee8_icgraph" alt=""/></div>
+<map name="utils_8h_a6c015ebea7f16b18953e03a899af8ee8_icgraph" id="utils_8h_a6c015ebea7f16b18953e03a899af8ee8_icgraph">
+<area shape="rect" title="Essa função escreve em um arquivo os valores calculados pelo método de Gauss&#45;Siedel...." alt="" coords="104,5,273,32"/>
+<area shape="rect" href="pdeSolver_8c.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="5,5,56,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="ac743d8dc6f2a624f75ed8eb3f629f8b1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac743d8dc6f2a624f75ed8eb3f629f8b1">&#9670;&nbsp;</a></span>gaussSiedel()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void gaussSiedel </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structSist__Lin.html">Sist_Lin</a> **&#160;</td>
+          <td class="paramname"><em>sistema</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="utils_8h.html#a525236e689afeb8b40df6cd2f99e279f">Real_t</a> **&#160;</td>
+          <td class="paramname"><em>u</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Implementação do método de Gauss-Siedel para a equação diferencial apresentada. </p>
+<dl class="params"><dt>Parâmetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">sistema</td><td>Ponteiro para o sistema que representa a equação diferencial. </td></tr>
+    <tr><td class="paramname">u</td><td>Vetor solução do sistema. </td></tr>
+  </table>
+  </dd>
+</dl>
+<div id="dynsection-7" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-7-trigger" src="closed.png" alt="+"/> Esse é o diagrama das funções que utilizam essa função:</div>
+<div id="dynsection-7-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-7-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="utils_8h_ac743d8dc6f2a624f75ed8eb3f629f8b1_icgraph.png" border="0" usemap="#utils_8h_ac743d8dc6f2a624f75ed8eb3f629f8b1_icgraph" alt=""/></div>
+<map name="utils_8h_ac743d8dc6f2a624f75ed8eb3f629f8b1_icgraph" id="utils_8h_ac743d8dc6f2a624f75ed8eb3f629f8b1_icgraph">
+<area shape="rect" title="Implementação do método de Gauss&#45;Siedel para a equação diferencial apresentada." alt="" coords="104,5,197,32"/>
+<area shape="rect" href="pdeSolver_8c.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="5,5,56,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a65d4a29c6d07d5644593a5ace9b50323"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a65d4a29c6d07d5644593a5ace9b50323">&#9670;&nbsp;</a></span>le_comandos()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int le_comandos </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>argc</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>argv</em>[], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned int *&#160;</td>
+          <td class="paramname"><em>nx</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned int *&#160;</td>
+          <td class="paramname"><em>ny</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned int *&#160;</td>
+          <td class="paramname"><em>iter</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char **&#160;</td>
+          <td class="paramname"><em>arq_saida</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Essa função valida os comandos passados como argumento. </p>
+<dl class="params"><dt>Parâmetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">argc</td><td>Um inteiro que representa o número de argumentos passados do Shell para o programa. </td></tr>
+    <tr><td class="paramname">argv</td><td>Um vetor de strings, os argumentos da função main. </td></tr>
+    <tr><td class="paramname">nx</td><td>Um inteiro sem sinal, o número de passos na dimensão x da região onde resolveremos a equação diferencial. </td></tr>
+    <tr><td class="paramname">ny</td><td>Um inteiro sem sinal, o número de passos na dimensão y da região onde resolveremos a equação diferencial. </td></tr>
+    <tr><td class="paramname">iter</td><td>Ponteiro para um tipo unsigned inte que armazenará o número máximo de iterações a se fazer na resolução do problema. </td></tr>
+    <tr><td class="paramname">arq_saida</td><td>Ponteiro para uma string que contém o nome do arquivo de saída ou NULO. </td></tr>
+  </table>
+  </dd>
+</dl>
+<div id="dynsection-8" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-8-trigger" src="closed.png" alt="+"/> Esse é o diagrama das funções que utilizam essa função:</div>
+<div id="dynsection-8-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-8-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="utils_8h_a65d4a29c6d07d5644593a5ace9b50323_icgraph.png" border="0" usemap="#utils_8h_a65d4a29c6d07d5644593a5ace9b50323_icgraph" alt=""/></div>
+<map name="utils_8h_a65d4a29c6d07d5644593a5ace9b50323_icgraph" id="utils_8h_a65d4a29c6d07d5644593a5ace9b50323_icgraph">
+<area shape="rect" title="Essa função valida os comandos passados como argumento." alt="" coords="104,5,203,32"/>
+<area shape="rect" href="pdeSolver_8c.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="5,5,56,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="aded5cdb03cd13ff40e542da36e2d61bc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aded5cdb03cd13ff40e542da36e2d61bc">&#9670;&nbsp;</a></span>libera_sist()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void libera_sist </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structSist__Lin.html">Sist_Lin</a> **&#160;</td>
+          <td class="paramname"><em>sist</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Essa função libera o vetor b do um sistema linear passado como argumento e depois libera o proprio sistema. </p>
+<dl class="params"><dt>Parâmetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">sist</td><td>Ponteiro para o sistema que representa a equação diferencial. </td></tr>
+  </table>
+  </dd>
+</dl>
+<div id="dynsection-9" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-9-trigger" src="closed.png" alt="+"/> Esse é o diagrama das funções que utilizam essa função:</div>
+<div id="dynsection-9-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-9-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="utils_8h_aded5cdb03cd13ff40e542da36e2d61bc_icgraph.png" border="0" usemap="#utils_8h_aded5cdb03cd13ff40e542da36e2d61bc_icgraph" alt=""/></div>
+<map name="utils_8h_aded5cdb03cd13ff40e542da36e2d61bc_icgraph" id="utils_8h_aded5cdb03cd13ff40e542da36e2d61bc_icgraph">
+<area shape="rect" title="Essa função libera o vetor b do um sistema linear passado como argumento e depois libera o proprio si..." alt="" coords="104,5,185,32"/>
+<area shape="rect" href="pdeSolver_8c.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="5,5,56,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a505eca46657a8a2b6ffd672945598ae2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a505eca46657a8a2b6ffd672945598ae2">&#9670;&nbsp;</a></span>libera_vetor()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void libera_vetor </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="utils_8h.html#a525236e689afeb8b40df6cd2f99e279f">Real_t</a> **&#160;</td>
+          <td class="paramname"><em>vetor</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Essa função chama a função free() para o vetor passado como argumento. </p>
+<dl class="params"><dt>Parâmetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">vetor</td><td>Um vetor de tipo Real_t qualquer. </td></tr>
+  </table>
+  </dd>
+</dl>
+<div id="dynsection-10" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-10-trigger" src="closed.png" alt="+"/> Esse é o diagrama das funções que utilizam essa função:</div>
+<div id="dynsection-10-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-10-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="utils_8h_a505eca46657a8a2b6ffd672945598ae2_icgraph.png" border="0" usemap="#utils_8h_a505eca46657a8a2b6ffd672945598ae2_icgraph" alt=""/></div>
+<map name="utils_8h_a505eca46657a8a2b6ffd672945598ae2_icgraph" id="utils_8h_a505eca46657a8a2b6ffd672945598ae2_icgraph">
+<area shape="rect" title="Essa função chama a função free() para o vetor passado como argumento." alt="" coords="307,31,396,57"/>
+<area shape="rect" href="metodo_8c.html#ab1978044b779fd8ec45bcd44c8d91766" title="Essa função calcula a norma L2 do resíduo de um sistema linear." alt="" coords="104,5,259,32"/>
+<area shape="rect" href="pdeSolver_8c.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="5,31,56,57"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="ad1f75d4b6d05731f71dd8fe6ee54bfeb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad1f75d4b6d05731f71dd8fe6ee54bfeb">&#9670;&nbsp;</a></span>timestamp()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double timestamp </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Função disponibilizada pelos professores para a medição de tempo. </p>
+<div id="dynsection-11" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-11-trigger" src="closed.png" alt="+"/> Esse é o diagrama das funções que utilizam essa função:</div>
+<div id="dynsection-11-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-11-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="utils_8h_ad1f75d4b6d05731f71dd8fe6ee54bfeb_icgraph.png" border="0" usemap="#utils_8h_ad1f75d4b6d05731f71dd8fe6ee54bfeb_icgraph" alt=""/></div>
+<map name="utils_8h_ad1f75d4b6d05731f71dd8fe6ee54bfeb_icgraph" id="utils_8h_ad1f75d4b6d05731f71dd8fe6ee54bfeb_icgraph">
+<area shape="rect" title="Função disponibilizada pelos professores para a medição de tempo." alt="" coords="104,5,187,32"/>
+<area shape="rect" href="pdeSolver_8c.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="5,5,56,32"/>
+</map>
+</div>
+
+</div>
+</div>
+</div><!-- contents -->
+<div class="ttc" id="autils_8h_html_a6c015ebea7f16b18953e03a899af8ee8"><div class="ttname"><a href="utils_8h.html#a6c015ebea7f16b18953e03a899af8ee8">escreve_solucao_gnuplot</a></div><div class="ttdeci">void escreve_solucao_gnuplot(char *arq_saida, double tempo_total_GaussSiedel, unsigned int num_iter, Real_t *residuo_iter, Sist_Lin *sist, Real_t *solucao)</div><div class="ttdoc">Essa função escreve em um arquivo os valores calculados pelo método de Gauss-Siedel....</div></div>
+<div class="ttc" id="astructSist__Lin_html_aa81d33afd28ccf9873e1b1150a5edc4a"><div class="ttname"><a href="structSist__Lin.html#aa81d33afd28ccf9873e1b1150a5edc4a">Sist_Lin::dSupx</a></div><div class="ttdeci">Real_t dSupx</div><div class="ttdef"><b>Definition:</b> utils.h:75</div></div>
+<div class="ttc" id="ametodo_8c_html_ad1f75d4b6d05731f71dd8fe6ee54bfeb"><div class="ttname"><a href="metodo_8c.html#ad1f75d4b6d05731f71dd8fe6ee54bfeb">timestamp</a></div><div class="ttdeci">double timestamp(void)</div><div class="ttdoc">Função disponibilizada pelos professores para a medição de tempo.</div><div class="ttdef"><b>Definition:</b> metodo.c:57</div></div>
+<div class="ttc" id="autils_8h_html_a70fb17257b703ace1dc73da9bb605bd1"><div class="ttname"><a href="utils_8h.html#a70fb17257b703ace1dc73da9bb605bd1">aloca_sist</a></div><div class="ttdeci">void aloca_sist(Sist_Lin **sist, unsigned int nx, unsigned int ny)</div><div class="ttdoc">Essa função aloca as estruturas de dados que compôem um sistema linear no programa....</div><div class="ttdef"><b>Definition:</b> sistema.c:4</div></div>
+<div class="ttc" id="autils_8h_html_ac743d8dc6f2a624f75ed8eb3f629f8b1"><div class="ttname"><a href="utils_8h.html#ac743d8dc6f2a624f75ed8eb3f629f8b1">gaussSiedel</a></div><div class="ttdeci">void gaussSiedel(Sist_Lin **sistema, Real_t **u)</div><div class="ttdoc">Implementação do método de Gauss-Siedel para a equação diferencial apresentada.</div><div class="ttdef"><b>Definition:</b> metodo.c:4</div></div>
+<div class="ttc" id="autils_8h_html_a598a3330b3c21701223ee0ca14316eca"><div class="ttname"><a href="utils_8h.html#a598a3330b3c21701223ee0ca14316eca">PI</a></div><div class="ttdeci">#define PI</div><div class="ttdef"><b>Definition:</b> utils.h:59</div></div>
+<div class="ttc" id="astructSist__Lin_html_a938d2f8c022557f38668755fe3cc391c"><div class="ttname"><a href="structSist__Lin.html#a938d2f8c022557f38668755fe3cc391c">Sist_Lin::nx</a></div><div class="ttdeci">unsigned int nx</div><div class="ttdef"><b>Definition:</b> utils.h:81</div></div>
+<div class="ttc" id="autils_8h_html_ab1978044b779fd8ec45bcd44c8d91766"><div class="ttname"><a href="utils_8h.html#ab1978044b779fd8ec45bcd44c8d91766">calcula_norma_residuo</a></div><div class="ttdeci">Real_t calcula_norma_residuo(Sist_Lin *sist, Real_t *u)</div><div class="ttdoc">Essa função calcula a norma L2 do resíduo de um sistema linear.</div><div class="ttdef"><b>Definition:</b> metodo.c:28</div></div>
+<div class="ttc" id="ametodo_8c_html_ab1978044b779fd8ec45bcd44c8d91766"><div class="ttname"><a href="metodo_8c.html#ab1978044b779fd8ec45bcd44c8d91766">calcula_norma_residuo</a></div><div class="ttdeci">Real_t calcula_norma_residuo(Sist_Lin *sist, Real_t *u)</div><div class="ttdoc">Essa função calcula a norma L2 do resíduo de um sistema linear.</div><div class="ttdef"><b>Definition:</b> metodo.c:28</div></div>
+<div class="ttc" id="autils_8h_html_a14933e96752ba4d635c99d03605f69c8"><div class="ttname"><a href="utils_8h.html#a14933e96752ba4d635c99d03605f69c8">myMalloc</a></div><div class="ttdeci">#define myMalloc(tam, tipo)</div><div class="ttdef"><b>Definition:</b> utils.h:55</div></div>
+<div class="ttc" id="apdeSolver_8c_html_a0ddf1224851353fc92bfbff6f499fa97"><div class="ttname"><a href="pdeSolver_8c.html#a0ddf1224851353fc92bfbff6f499fa97">main</a></div><div class="ttdeci">int main(int argc, char *argv[])</div><div class="ttdef"><b>Definition:</b> pdeSolver.c:3</div></div>
+<div class="ttc" id="autils_8h_html_afba4cc2bec8eb2d6fc2e4b48587b65d0"><div class="ttname"><a href="utils_8h.html#afba4cc2bec8eb2d6fc2e4b48587b65d0">MAXERR</a></div><div class="ttdeci">#define MAXERR</div><div class="ttdef"><b>Definition:</b> utils.h:58</div></div>
+<div class="ttc" id="astructSist__Lin_html_a375620cbb67e6becba6de1368c2758e0"><div class="ttname"><a href="structSist__Lin.html#a375620cbb67e6becba6de1368c2758e0">Sist_Lin::dSupy</a></div><div class="ttdeci">Real_t dSupy</div><div class="ttdef"><b>Definition:</b> utils.h:75</div></div>
+<div class="ttc" id="autils_8h_html_a505eca46657a8a2b6ffd672945598ae2"><div class="ttname"><a href="utils_8h.html#a505eca46657a8a2b6ffd672945598ae2">libera_vetor</a></div><div class="ttdeci">void libera_vetor(Real_t **vetor)</div><div class="ttdoc">Essa função chama a função free() para o vetor passado como argumento.</div><div class="ttdef"><b>Definition:</b> sistema.c:88</div></div>
+<div class="ttc" id="autils_8h_html"><div class="ttname"><a href="utils_8h.html">utils.h</a></div></div>
+<div class="ttc" id="astructSist__Lin_html_a3ff5ad79fef444a663cbfd22c6772e62"><div class="ttname"><a href="structSist__Lin.html#a3ff5ad79fef444a663cbfd22c6772e62">Sist_Lin::dPrin</a></div><div class="ttdeci">Real_t dPrin</div><div class="ttdef"><b>Definition:</b> utils.h:75</div></div>
+<div class="ttc" id="ametodo_8c_html_ac743d8dc6f2a624f75ed8eb3f629f8b1"><div class="ttname"><a href="metodo_8c.html#ac743d8dc6f2a624f75ed8eb3f629f8b1">gaussSiedel</a></div><div class="ttdeci">void gaussSiedel(Sist_Lin **sistema, Real_t **u)</div><div class="ttdoc">Implementação do método de Gauss-Siedel para a equação diferencial apresentada.</div><div class="ttdef"><b>Definition:</b> metodo.c:4</div></div>
+<div class="ttc" id="astructSist__Lin_html"><div class="ttname"><a href="structSist__Lin.html">Sist_Lin</a></div><div class="ttdoc">Essa estrutura anônima foi definida para o tipo Sist_Lin, que representa o sistema linear resultante ...</div><div class="ttdef"><b>Definition:</b> utils.h:74</div></div>
+<div class="ttc" id="asistema_8c_html_a505eca46657a8a2b6ffd672945598ae2"><div class="ttname"><a href="sistema_8c.html#a505eca46657a8a2b6ffd672945598ae2">libera_vetor</a></div><div class="ttdeci">void libera_vetor(Real_t **vetor)</div><div class="ttdoc">Essa função chama a função free() para o vetor passado como argumento.</div><div class="ttdef"><b>Definition:</b> sistema.c:88</div></div>
+<div class="ttc" id="astructSist__Lin_html_afa4777a79c6a674328a97d9aa18e8365"><div class="ttname"><a href="structSist__Lin.html#afa4777a79c6a674328a97d9aa18e8365">Sist_Lin::dInfx</a></div><div class="ttdeci">Real_t dInfx</div><div class="ttdef"><b>Definition:</b> utils.h:75</div></div>
+<div class="ttc" id="astructSist__Lin_html_ad8a7fa4e13bba52a27cbe796e7e538b5"><div class="ttname"><a href="structSist__Lin.html#ad8a7fa4e13bba52a27cbe796e7e538b5">Sist_Lin::dInfy</a></div><div class="ttdeci">Real_t dInfy</div><div class="ttdef"><b>Definition:</b> utils.h:75</div></div>
+<div class="ttc" id="astructSist__Lin_html_a5de0ec8e85c3afbf4f0d68d25235d6cc"><div class="ttname"><a href="structSist__Lin.html#a5de0ec8e85c3afbf4f0d68d25235d6cc">Sist_Lin::b</a></div><div class="ttdeci">Real_t * b</div><div class="ttdef"><b>Definition:</b> utils.h:80</div></div>
+<div class="ttc" id="autils_8h_html_ad1f75d4b6d05731f71dd8fe6ee54bfeb"><div class="ttname"><a href="utils_8h.html#ad1f75d4b6d05731f71dd8fe6ee54bfeb">timestamp</a></div><div class="ttdeci">double timestamp(void)</div><div class="ttdoc">Função disponibilizada pelos professores para a medição de tempo.</div><div class="ttdef"><b>Definition:</b> metodo.c:57</div></div>
+<div class="ttc" id="asistema_8c_html_a70fb17257b703ace1dc73da9bb605bd1"><div class="ttname"><a href="sistema_8c.html#a70fb17257b703ace1dc73da9bb605bd1">aloca_sist</a></div><div class="ttdeci">void aloca_sist(Sist_Lin **sist, unsigned int nx, unsigned int ny)</div><div class="ttdoc">Essa função aloca as estruturas de dados que compôem um sistema linear no programa....</div><div class="ttdef"><b>Definition:</b> sistema.c:4</div></div>
+<div class="ttc" id="astructSist__Lin_html_a0f9951bb9e28c7714f6f15980a834e6a"><div class="ttname"><a href="structSist__Lin.html#a0f9951bb9e28c7714f6f15980a834e6a">Sist_Lin::ny</a></div><div class="ttdeci">unsigned int ny</div><div class="ttdef"><b>Definition:</b> utils.h:82</div></div>
+<div class="ttc" id="asistema_8c_html_abb635c44284dd8c1966c2fc42e0899a7"><div class="ttname"><a href="sistema_8c.html#abb635c44284dd8c1966c2fc42e0899a7">aloca_e_inicializa_solucao</a></div><div class="ttdeci">void aloca_e_inicializa_solucao(Real_t **u, Sist_Lin *sist)</div><div class="ttdoc">Essa função aloca o vetor solução u(x,y) e o inicializa. Esse vetor representa a região do plano para...</div><div class="ttdef"><b>Definition:</b> sistema.c:42</div></div>
+<div class="ttc" id="autils_8h_html_a525236e689afeb8b40df6cd2f99e279f"><div class="ttname"><a href="utils_8h.html#a525236e689afeb8b40df6cd2f99e279f">Real_t</a></div><div class="ttdeci">double Real_t</div><div class="ttdef"><b>Definition:</b> utils.h:67</div></div>
+<div class="ttc" id="autils_8h_html_abb635c44284dd8c1966c2fc42e0899a7"><div class="ttname"><a href="utils_8h.html#abb635c44284dd8c1966c2fc42e0899a7">aloca_e_inicializa_solucao</a></div><div class="ttdeci">void aloca_e_inicializa_solucao(Real_t **u, Sist_Lin *sist)</div><div class="ttdoc">Essa função aloca o vetor solução u(x,y) e o inicializa. Esse vetor representa a região do plano para...</div><div class="ttdef"><b>Definition:</b> sistema.c:42</div></div>
+<div class="ttc" id="autils_8h_html_af596f72ea632cacabfde755a541272f8"><div class="ttname"><a href="utils_8h.html#af596f72ea632cacabfde755a541272f8">testMalloc</a></div><div class="ttdeci">#define testMalloc(pointer)</div><div class="ttdef"><b>Definition:</b> utils.h:56</div></div>
+<div class="ttc" id="autils_8h_html_a65d4a29c6d07d5644593a5ace9b50323"><div class="ttname"><a href="utils_8h.html#a65d4a29c6d07d5644593a5ace9b50323">le_comandos</a></div><div class="ttdeci">int le_comandos(int argc, char *argv[], unsigned int *nx, unsigned int *ny, unsigned int *iter, char **arq_saida)</div><div class="ttdoc">Essa função valida os comandos passados como argumento.</div><div class="ttdef"><b>Definition:</b> leitura.c:5</div></div>
+<div class="ttc" id="asistema_8c_html_aded5cdb03cd13ff40e542da36e2d61bc"><div class="ttname"><a href="sistema_8c.html#aded5cdb03cd13ff40e542da36e2d61bc">libera_sist</a></div><div class="ttdeci">void libera_sist(Sist_Lin **sist)</div><div class="ttdoc">Essa função libera o vetor b do um sistema linear passado como argumento e depois libera o proprio si...</div><div class="ttdef"><b>Definition:</b> sistema.c:76</div></div>
+<div class="ttc" id="autils_8h_html_a9ad7931c489738fde10d54262f89b40d"><div class="ttname"><a href="utils_8h.html#a9ad7931c489738fde10d54262f89b40d">index</a></div><div class="ttdeci">#define index(i, j, n)</div><div class="ttdef"><b>Definition:</b> utils.h:57</div></div>
+<div class="ttc" id="autils_8h_html_aded5cdb03cd13ff40e542da36e2d61bc"><div class="ttname"><a href="utils_8h.html#aded5cdb03cd13ff40e542da36e2d61bc">libera_sist</a></div><div class="ttdeci">void libera_sist(Sist_Lin **sist)</div><div class="ttdoc">Essa função libera o vetor b do um sistema linear passado como argumento e depois libera o proprio si...</div><div class="ttdef"><b>Definition:</b> sistema.c:76</div></div>
+<div class="ttc" id="aleitura_8c_html_a65d4a29c6d07d5644593a5ace9b50323"><div class="ttname"><a href="leitura_8c.html#a65d4a29c6d07d5644593a5ace9b50323">le_comandos</a></div><div class="ttdeci">int le_comandos(int argc, char *argv[], unsigned int *nx, unsigned int *ny, unsigned int *iter, char **arq_saida)</div><div class="ttdoc">Essa função valida os comandos passados como argumento.</div><div class="ttdef"><b>Definition:</b> leitura.c:5</div></div>
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Gerado em Domingo, 6 de Outubro de 2019 23:13:44 para PDE Solver por &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.17
+</small></address>
+</body>
+</html>

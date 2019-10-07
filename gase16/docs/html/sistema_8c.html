@@ -1,0 +1,297 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.17"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>PDE Solver: Referência do Arquivo src/sistema.c</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">PDE Solver
+   &#160;<span id="projectnumber">1.0</span>
+   </div>
+   <div id="projectbrief">Solução Numérica de uma Equação Diferencial Parcial Elíptica de Segunda Ordem.</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Gerado por Doxygen 1.8.17 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Busca');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','Busca');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#func-members">Funções</a>  </div>
+  <div class="headertitle">
+<div class="title">Referência do Arquivo sistema.c</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &quot;<a class="el" href="utils_8h_source.html">utils.h</a>&quot;</code><br />
+</div><div class="textblock"><div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Gráfico de dependência de inclusões para sistema.c:</div>
+<div id="dynsection-0-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-0-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="sistema_8c__incl.png" border="0" usemap="#src_2sistema_8c" alt=""/></div>
+<map name="src_2sistema_8c" id="src_2sistema_8c">
+<area shape="rect" title=" " alt="" coords="204,5,305,32"/>
+<area shape="rect" href="utils_8h.html" title=" " alt="" coords="226,80,283,107"/>
+<area shape="rect" title=" " alt="" coords="5,155,67,181"/>
+<area shape="rect" title=" " alt="" coords="91,155,154,181"/>
+<area shape="rect" title=" " alt="" coords="178,155,243,181"/>
+<area shape="rect" title=" " alt="" coords="268,155,332,181"/>
+<area shape="rect" title=" " alt="" coords="356,155,415,181"/>
+<area shape="rect" title=" " alt="" coords="439,155,521,181"/>
+</map>
+</div>
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Funções</h2></td></tr>
+<tr class="memitem:a70fb17257b703ace1dc73da9bb605bd1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sistema_8c.html#a70fb17257b703ace1dc73da9bb605bd1">aloca_sist</a> (<a class="el" href="structSist__Lin.html">Sist_Lin</a> **sist, unsigned int nx, unsigned int ny)</td></tr>
+<tr class="memdesc:a70fb17257b703ace1dc73da9bb605bd1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Essa função aloca as estruturas de dados que compôem um sistema linear no programa. Constituído basicamente dos membros da struct <a class="el" href="structSist__Lin.html" title="Essa estrutura anônima foi definida para o tipo Sist_Lin, que representa o sistema linear resultante ...">Sist_Lin</a>, essa função executa um malloc para o vetor b. Ela também o preenche com os valores de f(x,y).  <a href="sistema_8c.html#a70fb17257b703ace1dc73da9bb605bd1">Mais...</a><br /></td></tr>
+<tr class="separator:a70fb17257b703ace1dc73da9bb605bd1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abb635c44284dd8c1966c2fc42e0899a7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sistema_8c.html#abb635c44284dd8c1966c2fc42e0899a7">aloca_e_inicializa_solucao</a> (<a class="el" href="utils_8h.html#a525236e689afeb8b40df6cd2f99e279f">Real_t</a> **u, <a class="el" href="structSist__Lin.html">Sist_Lin</a> *sist)</td></tr>
+<tr class="memdesc:abb635c44284dd8c1966c2fc42e0899a7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Essa função aloca o vetor solução u(x,y) e o inicializa. Esse vetor representa a região do plano para a qual se quer resolver a equação diferencial. O vetor é preenchido com zeros nos seus pontos internos e com as condições de contorno nas bordas da região. No caso da equação do trabalho a região e as cndições eram: O dominio D = [0, PI] x [0, PI], onde: u(x,0) = sin( 2*PI*(PI-x) ) * sinh( PI*PI ) u(x,PI) = sin( 2*PI*x ) * sinh( PI*PI ) u(0,y) = 0 u(PI,y) = 0.  <a href="sistema_8c.html#abb635c44284dd8c1966c2fc42e0899a7">Mais...</a><br /></td></tr>
+<tr class="separator:abb635c44284dd8c1966c2fc42e0899a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aded5cdb03cd13ff40e542da36e2d61bc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sistema_8c.html#aded5cdb03cd13ff40e542da36e2d61bc">libera_sist</a> (<a class="el" href="structSist__Lin.html">Sist_Lin</a> **sist)</td></tr>
+<tr class="memdesc:aded5cdb03cd13ff40e542da36e2d61bc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Essa função libera o vetor b do um sistema linear passado como argumento e depois libera o proprio sistema.  <a href="sistema_8c.html#aded5cdb03cd13ff40e542da36e2d61bc">Mais...</a><br /></td></tr>
+<tr class="separator:aded5cdb03cd13ff40e542da36e2d61bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a505eca46657a8a2b6ffd672945598ae2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sistema_8c.html#a505eca46657a8a2b6ffd672945598ae2">libera_vetor</a> (<a class="el" href="utils_8h.html#a525236e689afeb8b40df6cd2f99e279f">Real_t</a> **vetor)</td></tr>
+<tr class="memdesc:a505eca46657a8a2b6ffd672945598ae2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Essa função chama a função free() para o vetor passado como argumento.  <a href="sistema_8c.html#a505eca46657a8a2b6ffd672945598ae2">Mais...</a><br /></td></tr>
+<tr class="separator:a505eca46657a8a2b6ffd672945598ae2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">Funções</h2>
+<a id="abb635c44284dd8c1966c2fc42e0899a7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abb635c44284dd8c1966c2fc42e0899a7">&#9670;&nbsp;</a></span>aloca_e_inicializa_solucao()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void aloca_e_inicializa_solucao </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="utils_8h.html#a525236e689afeb8b40df6cd2f99e279f">Real_t</a> **&#160;</td>
+          <td class="paramname"><em>u</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structSist__Lin.html">Sist_Lin</a> *&#160;</td>
+          <td class="paramname"><em>sist</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Essa função aloca o vetor solução u(x,y) e o inicializa. Esse vetor representa a região do plano para a qual se quer resolver a equação diferencial. O vetor é preenchido com zeros nos seus pontos internos e com as condições de contorno nas bordas da região. No caso da equação do trabalho a região e as cndições eram: O dominio D = [0, PI] x [0, PI], onde: u(x,0) = sin( 2*PI*(PI-x) ) * sinh( PI*PI ) u(x,PI) = sin( 2*PI*x ) * sinh( PI*PI ) u(0,y) = 0 u(PI,y) = 0. </p>
+<dl class="params"><dt>Parâmetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">sist</td><td>Ponteiro para o sistema que representa a equação diferencial. </td></tr>
+    <tr><td class="paramname">u</td><td>Vetor solução do sistema. </td></tr>
+  </table>
+  </dd>
+</dl>
+<div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-1-trigger" src="closed.png" alt="+"/> Esse é o diagrama das funções que utilizam essa função:</div>
+<div id="dynsection-1-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-1-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="sistema_8c_abb635c44284dd8c1966c2fc42e0899a7_icgraph.png" border="0" usemap="#sistema_8c_abb635c44284dd8c1966c2fc42e0899a7_icgraph" alt=""/></div>
+<map name="sistema_8c_abb635c44284dd8c1966c2fc42e0899a7_icgraph" id="sistema_8c_abb635c44284dd8c1966c2fc42e0899a7_icgraph">
+<area shape="rect" title="Essa função aloca o vetor solução u(x,y) e o inicializa. Esse vetor representa a região do plano para..." alt="" coords="104,5,228,47"/>
+<area shape="rect" href="pdeSolver_8c.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="5,13,56,39"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a70fb17257b703ace1dc73da9bb605bd1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a70fb17257b703ace1dc73da9bb605bd1">&#9670;&nbsp;</a></span>aloca_sist()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void aloca_sist </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structSist__Lin.html">Sist_Lin</a> **&#160;</td>
+          <td class="paramname"><em>sist</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned int&#160;</td>
+          <td class="paramname"><em>nx</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned int&#160;</td>
+          <td class="paramname"><em>ny</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Essa função aloca as estruturas de dados que compôem um sistema linear no programa. Constituído basicamente dos membros da struct <a class="el" href="structSist__Lin.html" title="Essa estrutura anônima foi definida para o tipo Sist_Lin, que representa o sistema linear resultante ...">Sist_Lin</a>, essa função executa um malloc para o vetor b. Ela também o preenche com os valores de f(x,y). </p>
+<dl class="params"><dt>Parâmetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">sist</td><td>Ponteiro para o sistema que representa a equação diferencial. </td></tr>
+    <tr><td class="paramname">nx</td><td>Um inteiro sem sinal, o número de passos na dimensão x da região onde resolveremos a equação diferencial. </td></tr>
+    <tr><td class="paramname">ny</td><td>Um inteiro sem sinal, o número de passos na dimensão y da região onde resolveremos a equação diferencial. </td></tr>
+  </table>
+  </dd>
+</dl>
+<div id="dynsection-2" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-2-trigger" src="closed.png" alt="+"/> Esse é o diagrama das funções que utilizam essa função:</div>
+<div id="dynsection-2-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-2-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="sistema_8c_a70fb17257b703ace1dc73da9bb605bd1_icgraph.png" border="0" usemap="#sistema_8c_a70fb17257b703ace1dc73da9bb605bd1_icgraph" alt=""/></div>
+<map name="sistema_8c_a70fb17257b703ace1dc73da9bb605bd1_icgraph" id="sistema_8c_a70fb17257b703ace1dc73da9bb605bd1_icgraph">
+<area shape="rect" title="Essa função aloca as estruturas de dados que compôem um sistema linear no programa...." alt="" coords="104,5,185,32"/>
+<area shape="rect" href="pdeSolver_8c.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="5,5,56,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="aded5cdb03cd13ff40e542da36e2d61bc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aded5cdb03cd13ff40e542da36e2d61bc">&#9670;&nbsp;</a></span>libera_sist()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void libera_sist </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structSist__Lin.html">Sist_Lin</a> **&#160;</td>
+          <td class="paramname"><em>sist</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Essa função libera o vetor b do um sistema linear passado como argumento e depois libera o proprio sistema. </p>
+<dl class="params"><dt>Parâmetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">sist</td><td>Ponteiro para o sistema que representa a equação diferencial. </td></tr>
+  </table>
+  </dd>
+</dl>
+<div id="dynsection-3" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-3-trigger" src="closed.png" alt="+"/> Esse é o diagrama das funções que utilizam essa função:</div>
+<div id="dynsection-3-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-3-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="sistema_8c_aded5cdb03cd13ff40e542da36e2d61bc_icgraph.png" border="0" usemap="#sistema_8c_aded5cdb03cd13ff40e542da36e2d61bc_icgraph" alt=""/></div>
+<map name="sistema_8c_aded5cdb03cd13ff40e542da36e2d61bc_icgraph" id="sistema_8c_aded5cdb03cd13ff40e542da36e2d61bc_icgraph">
+<area shape="rect" title="Essa função libera o vetor b do um sistema linear passado como argumento e depois libera o proprio si..." alt="" coords="104,5,185,32"/>
+<area shape="rect" href="pdeSolver_8c.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="5,5,56,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a505eca46657a8a2b6ffd672945598ae2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a505eca46657a8a2b6ffd672945598ae2">&#9670;&nbsp;</a></span>libera_vetor()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void libera_vetor </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="utils_8h.html#a525236e689afeb8b40df6cd2f99e279f">Real_t</a> **&#160;</td>
+          <td class="paramname"><em>vetor</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Essa função chama a função free() para o vetor passado como argumento. </p>
+<dl class="params"><dt>Parâmetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">vetor</td><td>Um vetor de tipo Real_t qualquer. </td></tr>
+  </table>
+  </dd>
+</dl>
+<div id="dynsection-4" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-4-trigger" src="closed.png" alt="+"/> Esse é o diagrama das funções que utilizam essa função:</div>
+<div id="dynsection-4-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-4-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="sistema_8c_a505eca46657a8a2b6ffd672945598ae2_icgraph.png" border="0" usemap="#sistema_8c_a505eca46657a8a2b6ffd672945598ae2_icgraph" alt=""/></div>
+<map name="sistema_8c_a505eca46657a8a2b6ffd672945598ae2_icgraph" id="sistema_8c_a505eca46657a8a2b6ffd672945598ae2_icgraph">
+<area shape="rect" title="Essa função chama a função free() para o vetor passado como argumento." alt="" coords="307,31,396,57"/>
+<area shape="rect" href="metodo_8c.html#ab1978044b779fd8ec45bcd44c8d91766" title="Essa função calcula a norma L2 do resíduo de um sistema linear." alt="" coords="104,5,259,32"/>
+<area shape="rect" href="pdeSolver_8c.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="5,31,56,57"/>
+</map>
+</div>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Gerado em Domingo, 6 de Outubro de 2019 23:13:44 para PDE Solver por &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.17
+</small></address>
+</body>
+</html>

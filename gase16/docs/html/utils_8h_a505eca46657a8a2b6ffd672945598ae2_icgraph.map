@@ -1,0 +1,5 @@
+<map id="libera_vetor" name="libera_vetor">
+<area shape="rect" id="node1" title="Essa função chama a função free() para o vetor passado como argumento." alt="" coords="307,31,396,57"/>
+<area shape="rect" id="node2" href="$metodo_8c.html#ab1978044b779fd8ec45bcd44c8d91766" title="Essa função calcula a norma L2 do resíduo de um sistema linear." alt="" coords="104,5,259,32"/>
+<area shape="rect" id="node3" href="$pdeSolver_8c.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="5,31,56,57"/>
+</map>

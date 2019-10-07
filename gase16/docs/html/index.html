@@ -1,0 +1,104 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.17"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>PDE Solver: Informações Gerais</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">PDE Solver
+   &#160;<span id="projectnumber">1.0</span>
+   </div>
+   <div id="projectbrief">Solução Numérica de uma Equação Diferencial Parcial Elíptica de Segunda Ordem.</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Gerado por Doxygen 1.8.17 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Busca');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','Busca');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="PageDoc"><div class="header">
+  <div class="headertitle">
+<div class="title">Informações Gerais </div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><h1><a class="anchor" id="intro"></a>
+Introduction</h1>
+<p>O programa apresentado nessa documentação resolve a seguinte equação diferencial:</p>
+<p><img src="http://latex.codecogs.com/svg.latex?(\partial u/\partial x + \partial u/\partial y) - (\partial^2 u/\partial^2 x + \partial^2 u/\partial^2 y)=" alt="" border="0" class="inline"/></p>
+<p><img src="http://latex.codecogs.com/svg.latex?4*\pi^2(sin(2*\pi*x)*sinh(\pi*y)+sin(2*\pi*(\pi-x))*sinh(\pi(\pi-y)))," alt="" border="0" class="inline"/></p>
+<p>com <img src="http://latex.codecogs.com/svg.latex?(x,y) \in [0,\pi] \times [0,\pi]" alt="" border="0" class="inline"/>.</p>
+<p>Onde u, que é função de x e y, é a função que quero aproximar.</p>
+<p>Para resolver esse problema usei o método das diferenças finitas e o método de gauss-Siedel para a resolução do sistema linear resultante da transformação finita.</p>
+<h1><a class="anchor" id="discussion"></a>
+Resolução</h1>
+<h2><a class="anchor" id="step1"></a>
+Diferenças Finitas: Discretizar um problema contínuo.</h2>
+<p>Como não se pode pensar em limites como usualmente se pensa dentro de uma máquina de precisão finita, é importante utilizar métodos finitos para a aproximação da derivada.</p>
+<p>Inicialmente passamos a observar cada ponto u(x,y) se imaginarmos eles igualmente espaçados em cada dimensão, podemos definir passos hx e hy de maneira que a aproximação por diferenças finitas centrais para a derivada primeira e segunda para x e para y são as seguintes:</p>
+<p><img src="http://latex.codecogs.com/svg.latex?\partial u/\partial x = (u(x+hx,y)-u(x-hx,y))/(2*hx)" alt="" border="0" class="inline"/>. <img src="http://latex.codecogs.com/svg.latex?\partial u/\partial y = (u(x,y+hy)-u(x,y-hy))/(2*hy)" alt="" border="0" class="inline"/>. <img src="http://latex.codecogs.com/svg.latex?\partial^2 u/\partial^2 x = (u(x+hx,y)-2u(x,y)+ u(x-hx,y))/(hx^2)" alt="" border="0" class="inline"/>. <img src="http://latex.codecogs.com/svg.latex?\partial^2 u/\partial^2 y = (u(x,y+hy)-2u(x,y)+u(x,y-hy))/(hy^2)" alt="" border="0" class="inline"/>.</p>
+<p>Assim u(x,y) é equivalente a Uij onde um aumento de 1 unidade em i ou j representa um passo de hx ou hy.</p>
+<p>O sistema linear que surgiu foi o resultado de tratar os nx*ny pontos da equação diferencial como um vetor de valores reais (as valores de Uij). A matriz A resultante é uma matriz em faixas, com cinco diagonais. A principal, que multiplica o termo Uij e as outras são para os outros termos de U que aparecem na equação discretizada.</p>
+<h2><a class="anchor" id="step2"></a>
+Gauss Siedel: Calcular a aproximação numérica.</h2>
+<p>Para a iteração do Gaus-Siedel, isolo o elemento Uij e calculo o valor da expressão dele.</p>
+<p>A condição de parada é a norma do resíduo para a iteração atual, que é comparado com um valor de erro máximo MAXERR. <br  />
+</p>
+<dl class="section author"><dt>Autor</dt><dd>Gabriel Sales GRR20165266 </dd></dl>
+<dl class="section date"><dt>Data</dt><dd>06-10-2019 </dd></dl>
+<dl class="section copyright"><dt>Copyright</dt><dd><a href="https://www.gnu.org/licenses/gpl-3.0-standalone.html">GPLv3</a> </dd></dl>
+</div></div><!-- PageDoc -->
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Gerado em Domingo, 6 de Outubro de 2019 23:13:44 para PDE Solver por &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.17
+</small></address>
+</body>
+</html>

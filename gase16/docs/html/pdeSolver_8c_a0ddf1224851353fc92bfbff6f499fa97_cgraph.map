@@ -1,0 +1,12 @@
+<map id="main" name="main">
+<area shape="rect" id="node1" title=" " alt="" coords="5,223,56,250"/>
+<area shape="rect" id="node2" href="$utils_8h.html#abb635c44284dd8c1966c2fc42e0899a7" title="Essa função aloca o vetor solução u(x,y) e o inicializa. Esse vetor representa a região do plano para..." alt="" coords="127,5,251,47"/>
+<area shape="rect" id="node3" href="$utils_8h.html#a70fb17257b703ace1dc73da9bb605bd1" title="Essa função aloca as estruturas de dados que compôem um sistema linear no programa...." alt="" coords="148,71,229,98"/>
+<area shape="rect" id="node4" href="$utils_8h.html#ab1978044b779fd8ec45bcd44c8d91766" title="Essa função calcula a norma L2 do resíduo de um sistema linear." alt="" coords="111,122,266,149"/>
+<area shape="rect" id="node5" href="$utils_8h.html#a505eca46657a8a2b6ffd672945598ae2" title="Essa função chama a função free() para o vetor passado como argumento." alt="" coords="321,147,411,174"/>
+<area shape="rect" id="node6" href="$utils_8h.html#a6c015ebea7f16b18953e03a899af8ee8" title="Essa função escreve em um arquivo os valores calculados pelo método de Gauss&#45;Siedel...." alt="" coords="104,223,273,250"/>
+<area shape="rect" id="node7" href="$utils_8h.html#ac743d8dc6f2a624f75ed8eb3f629f8b1" title="Implementação do método de Gauss&#45;Siedel para a equação diferencial apresentada." alt="" coords="142,274,235,301"/>
+<area shape="rect" id="node8" href="$utils_8h.html#a65d4a29c6d07d5644593a5ace9b50323" title="Essa função valida os comandos passados como argumento." alt="" coords="139,325,238,351"/>
+<area shape="rect" id="node9" href="$utils_8h.html#aded5cdb03cd13ff40e542da36e2d61bc" title="Essa função libera o vetor b do um sistema linear passado como argumento e depois libera o proprio si..." alt="" coords="148,375,229,402"/>
+<area shape="rect" id="node10" href="$utils_8h.html#ad1f75d4b6d05731f71dd8fe6ee54bfeb" title="Função disponibilizada pelos professores para a medição de tempo." alt="" coords="147,426,230,453"/>
+</map>
