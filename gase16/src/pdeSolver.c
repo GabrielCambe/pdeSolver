@@ -11,7 +11,7 @@ int main(int argc, char *argv[]){
 
     // alocar e inicializar sistema de equações 
     Sist_Lin *sistema;
-    aloca_sist( &sistema, ny, ny );
+    aloca_sist( &sistema, nx, ny );
 
     // alocar e inicializar o vetor solução nulo
     Real_t *u;
