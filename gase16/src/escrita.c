@@ -58,25 +58,31 @@ void escreve_solucao_gnuplot(char* arq_saida, double tempo_total_GaussSiedel, un
       \file arqdat
       \brief Esse arquivo é usado para passar o número de pontos como argumentos para o gnuplot.
      */
-    FILE *arquivo_de_daods = fopen( "arqdat", "w+" );
-    fprintf(arquivo_de_daods, "%s", arq_saida);
-    fclose(arquivo_de_daods);
+    FILE *arquivo_de_dados = fopen( "arqdat", "w+" );
+    if( arquivo_de_dados != NULL ){
+      fprintf(arquivo_de_dados, "%s", arq_saida);
+      fclose(arquivo_de_dados);
+    }
 
     /*!
       \file nx
       \brief Esse arquivo é usado para passar o número de pontos como argumentos para o gnuplot.
      */
     FILE *num_pontos_x = fopen( "nx", "w+" );
-    fprintf(num_pontos_x, "%u", (sist->nx)+2);
-    fclose(num_pontos_x);
-
+    if( num_pontos_x != NULL ){
+      fprintf(num_pontos_x, "%u", (sist->nx)+2);
+      fclose(num_pontos_x);
+    }
+    
     /*!
       \file ny
       \brief Esse arquivo é usado para passar o número de pontos como argumentos para o gnuplot.
      */
     FILE *num_pontos_y = fopen( "ny", "w+" );
-    fprintf(num_pontos_y, "%u", (sist->ny)+2);
-    fclose(num_pontos_y);
+    if( num_pontos_x != NULL ){
+      fprintf(num_pontos_y, "%u", (sist->ny)+2);
+      fclose(num_pontos_y);
+    }
 
     return;
 }

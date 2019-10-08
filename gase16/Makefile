@@ -33,14 +33,14 @@ plot3d:
 clean:
 	rm *.o || true
 	rm *~ || true
- 
+
 dist-clean: clean
 	rm nx || true
 	rm ny || true
 	ARQDAT=$$(cat arqdat) && \
-	rm $${ARQDAT}
+	rm $${ARQDAT} || true
 	rm arqdat || true
-	
+
 clean-docs:
 	rm -rf ./doc/ || true
 
