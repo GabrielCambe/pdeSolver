@@ -86,8 +86,8 @@ void aloca_e_inicializa_solucao( Real_t **u, Sist_Lin *sist ){
               continue;
             }
             
-            (*u)[ index(i,j,(sist->ny)+2) ] = 0;
-            // (*u)[ index(i,j,(sist->ny)+2) ] = rand();
+            // (*u)[ index(i,j,(sist->ny)+2) ] = 0;
+            (*u)[ index(i,j,(sist->ny)+2) ] = rand();
         }
     }
 
