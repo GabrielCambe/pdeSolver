@@ -32,6 +32,40 @@ void escreve_solucao_gnuplot(char* arq_saida, double tempo_total_GaussSiedel, un
         
         // feche o arquivo de saída
         fclose(saida);
+
+
+      // Para o gnuplot
+      
+      /*!
+        \file arqdat
+        \brief Esse arquivo é usado para passar o número de pontos como argumentos para o gnuplot.
+      */
+      FILE *arquivo_de_dados = fopen( "arqdat", "w+" );
+      if( arquivo_de_dados != NULL ){
+        fprintf(arquivo_de_dados, "%s", arq_saida);
+        fclose(arquivo_de_dados);
+      }
+
+      /*!
+        \file nx
+        \brief Esse arquivo é usado para passar o número de pontos como argumentos para o gnuplot.
+      */
+      FILE *num_pontos_x = fopen( "nx", "w+" );
+      if( num_pontos_x != NULL ){
+        fprintf(num_pontos_x, "%u", (sist->nx)+2);
+        fclose(num_pontos_x);
+      }
+    
+      /*!
+        \file ny
+        \brief Esse arquivo é usado para passar o número de pontos como argumentos para o gnuplot.
+      */
+      FILE *num_pontos_y = fopen( "ny", "w+" );
+      if( num_pontos_x != NULL ){
+        fprintf(num_pontos_y, "%u", (sist->ny)+2);
+        fclose(num_pontos_y);
+      }
+
     }
     else{
         // escreva os comentarios acerca da execução do programa na saída padrão?
@@ -52,36 +86,6 @@ void escreve_solucao_gnuplot(char* arq_saida, double tempo_total_GaussSiedel, un
             }
             printf( "\n" );
         }
-    }
-
-    /*!
-      \file arqdat
-      \brief Esse arquivo é usado para passar o número de pontos como argumentos para o gnuplot.
-     */
-    FILE *arquivo_de_dados = fopen( "arqdat", "w+" );
-    if( arquivo_de_dados != NULL ){
-      fprintf(arquivo_de_dados, "%s", arq_saida);
-      fclose(arquivo_de_dados);
-    }
-
-    /*!
-      \file nx
-      \brief Esse arquivo é usado para passar o número de pontos como argumentos para o gnuplot.
-     */
-    FILE *num_pontos_x = fopen( "nx", "w+" );
-    if( num_pontos_x != NULL ){
-      fprintf(num_pontos_x, "%u", (sist->nx)+2);
-      fclose(num_pontos_x);
-    }
-    
-    /*!
-      \file ny
-      \brief Esse arquivo é usado para passar o número de pontos como argumentos para o gnuplot.
-     */
-    FILE *num_pontos_y = fopen( "ny", "w+" );
-    if( num_pontos_x != NULL ){
-      fprintf(num_pontos_y, "%u", (sist->ny)+2);
-      fclose(num_pontos_y);
     }
 
     return;

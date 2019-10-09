@@ -76,7 +76,9 @@ void escreve_solucao_gnuplot( char* arq_saida, double tempo_total_GaussSiedel, u
     \param nx Um inteiro sem sinal, o número de passos na dimensão x da região onde resolveremos a equação diferencial.
     \param ny Um inteiro sem sinal, o número de passos na dimensão y da região onde resolveremos a equação diferencial.
 */
-void aloca_sist( Sist_Lin** sist, unsigned int nx, unsigned int ny );
+// void aloca_sist( Sist_Lin** sist, unsigned int nx, unsigned int ny );
+void aloca_sist( Sist_Lin* sist, unsigned int nx, unsigned int ny );
+
 
 
 /*!
@@ -101,7 +103,8 @@ void aloca_e_inicializa_solucao(  Real_t **u, Sist_Lin *sist  );
 
     \param sist Ponteiro para o sistema que representa a equação diferencial.
 */
-void libera_sist( Sist_Lin** sist );
+// void libera_sist( Sist_Lin** sist );
+void libera_sist( Sist_Lin* sist );
 
 
 /*!
@@ -118,7 +121,8 @@ void libera_vetor(  Real_t** vetor  );
     \param sistema Ponteiro para o sistema que representa a equação diferencial.
     \param u Vetor solução do sistema.
 */
-void gaussSiedel( Sist_Lin **sistema, Real_t **u );
+// void gaussSiedel( Sist_Lin **sistema, Real_t **u );
+void gaussSiedel( Sist_Lin *sistema, Real_t **u );
 
 
 /*!

@@ -29,6 +29,12 @@ plot3d:
 	NX=$$(cat nx) && NY=$$(cat ny) && \
 	gnuplot -c "pde3d.plg" "$${ARQDAT}" $${NX} $${NY}
 
+# gnuplot -c "pde3dAnimacao.plg" "arq.dat" $${NX} $${NY}
+plot3dAnim:
+	ARQDAT=$$(cat arqdat) && \
+	NX=$$(cat nx) && NY=$$(cat ny) && \
+	gnuplot -c ""pde3dAnimacao.plg"" "$${ARQDAT}" $${NX} $${NY}
+
 # clean: remove todos os arquivos temporários e os arquivos gerados pelo Makefile (*.o, executável, etc.).
 clean:
 	rm *.o || true
