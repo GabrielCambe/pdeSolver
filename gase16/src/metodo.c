@@ -34,19 +34,13 @@ Real_t calcula_norma_residuo(Sist_Lin *sist, Real_t *u){
     Real_t *residuo = myMalloc(((sist->nx)+2)*((sist->ny)+2), Real_t);
     testMalloc(residuo);
 
+    // Real_t residuo = 0; IMPLEMENTE A EXPRESSÃO PARA O RESIDUO!
+
     Real_t norma = 0;
 
     // calcula norma resíduo
     for(unsigned int i = 1; i < ((sist->nx)+1); ++i){
         for(unsigned int j = 1; j < ((sist->ny)+1); ++j){
-            // residuo[ index(i,j,(sist->ny)+2) ] = (sist->b[ index(i,j,(sist->ny)+2) ]);
-            // residuo[ index(i,j,(sist->ny)+2) ] -= ((sist->dInfy) * u[ index(i,j-1,(sist->ny)+2) ]);  
-            // residuo[ index(i,j,(sist->ny)+2) ] -= ((sist->dInfx) * u[ index(i-1,j,(sist->ny)+2) ]);
-            // residuo[ index(i,j,(sist->ny)+2) ] -= ((sist->dSupy) * u[ index(i,j+1,(sist->ny)+2) ]);
-            // residuo[ index(i,j,(sist->ny)+2) ] -= ((sist->dSupx) * u[ index(i+1,j,(sist->ny)+2) ]);
-            // residuo[ index(i,j,(sist->ny)+2) ] -= (sist->dPrin) * u[ index(i,j,(sist->ny)+2) ];
-            // devo evitar dependencias artificiais
-
             // residuo = b - Ax 
             residuo[ index(i,j,(sist->ny)+2) ] = (sist->b[ index(i,j,(sist->ny)+2) ]);
             residuo[ index(i,j,(sist->ny)+2) ] -= (((sist->dInfy) * u[ index(i,j-1,(sist->ny)+2) ]) + ((sist->dInfx) * u[ index(i-1,j,(sist->ny)+2) ]) + ((sist->dSupy) * u[ index(i,j+1,(sist->ny)+2) ]) + ((sist->dSupx) * u[ index(i+1,j,(sist->ny)+2) ]) + (sist->dPrin) * u[ index(i,j,(sist->ny)+2) ]);

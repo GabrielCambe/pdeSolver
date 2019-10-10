@@ -1,0 +1,3 @@
+https://stackoverflow.com/questions/8789729/how-to-zero-pad-a-sequence-of-integers-in-bash-so-that-all-have-the-same-width
+
+https://hamelot.io/visualization/using-ffmpeg-to-convert-a-set-of-images-into-a-video/

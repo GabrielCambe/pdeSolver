@@ -27,7 +27,7 @@ void aloca_sist(Sist_Lin* sist, unsigned int nx, unsigned int ny){
     y = 0;
     for(unsigned int j = 0; j < (ny+2); ++j, y += hy){
       // preencher o vetor b com os valores de f(x,y)
-      sist->b[ index(i,j,(sist->ny)+2) ] = 4*PI*PI*( (sin(2*PI*x) * sinh(PI*y)) + (sin(2*PI*(PI-x)) * sinh(PI*(PI-y))));
+      sist->b[ index(i,j,(sist->ny)+2) ] = (4*PI*PI)*( (sin(2*PI*x) * sinh(PI*y)) + (sin(2*PI*(PI-x)) * sinh(PI*(PI-y))));
     }
   }
 
@@ -56,20 +56,6 @@ void aloca_e_inicializa_solucao( Real_t **u, Sist_Lin *sist ){
     for(unsigned int i = 0; i < ((sist->nx)+2); ++i, x += hx){
         y = 0;
         for(unsigned int j = 0; j < ((sist->ny)+2); ++j, y += hy){
-            // if(i == 0 || i == ((sist->nx)+1)){ // u(0,y) = 0; u(PI,y) = 0
-	          //   (*u)[ index(i,j,(sist->ny)+2) ] = 0 ;
-	            
-            // }else if(j == 0){ // u(x,0) = sin( 2*PI*(PI-x) ) * sinh( PI*PI )
-	          //   (*u)[ index(i,j,(sist->ny)+2) ] = sin( 2*PI*(PI-x) ) * sinh( PI*PI );
-	            
-            // }else if(j == ((sist->ny)+1)){ // u(x,PI) = sin( 2*PI*x ) * sinh( PI*PI )
-	          //   (*u)[ index(i,j,(sist->ny)+2) ] = sin( 2*PI*x ) * sinh( PI*PI );
-	            
-            // }else{
-            //     (*u)[ index(i,j,(sist->ny)+2) ] = 0;
-            //     // (*u)[ index(i,j,(sist->ny)+2) ] = rand();
-            // }
-            // posso evitar os diversos branchs
 
             if(i == 0 || i == ((sist->nx)+1)){ // u(0,y) = 0; u(PI,y) = 0
 	            (*u)[ index(i,j,(sist->ny)+2) ] = 0 ;
@@ -98,19 +84,21 @@ void aloca_e_inicializa_solucao( Real_t **u, Sist_Lin *sist ){
 // void libera_sist(Sist_Lin** sist){
 void libera_sist(Sist_Lin* sist){
     // desalocar o vetor b
-    free(sist->b);
-    sist->b = NULL;
-    
-    // // desalocar o sistema 
-    // free((*sist));
-    // (*sist) = NULL;
-
+    if( sist->b != NULL ){
+      free(sist->b);
+      sist->b = NULL;
+    }
+  
     return;
 }
 
 // Libera o vetor usado como solucao no metodo
 void libera_vetor( Real_t** vetor ){
     // desaloca o vetor
-    free((*vetor));
+    if( (*vetor) != NULL ){
+      free((*vetor));
+      (*vetor) = NULL;
+    }
+
     return;
 }

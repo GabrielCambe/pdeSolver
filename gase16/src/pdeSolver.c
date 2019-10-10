@@ -58,6 +58,8 @@ int main(int argc, char *argv[]){
     //   return (-1);
     // }
     // mesmo que o metodo nao convirga os valores devem ser impressos
+    // retornar um valor dferente quandpo o metodo o metodo nao convergir assim o script de animação pode tomar decisões
+    // algo como while not converge continua a aumentar o numero de iterações, caso o argumento de número de iterações for vazio
 
     // escreve o arquivo de saída
     escreve_solucao_gnuplot( arq_saida, tempo_total_GaussSiedel, k, norma_residuo_por_iter, &sistema, u );
@@ -65,14 +67,8 @@ int main(int argc, char *argv[]){
     // libere a memoria usada para as estruturas
     libera_sist( &sistema );
     libera_vetor( &u );
-    free( norma_residuo_por_iter );
-    norma_residuo_por_iter = NULL;
+    libera_vetor( &norma_residuo_por_iter );
   
-    // if( maior_err_aprox >= 0.25 ){
-    //   perror("Atenção! Não houve convergência para o método! Tente aumentar o número de iterações.\n");
-    //   return (-1);
-    // }
-
   }else{
 
     return (-1);
