@@ -1,4 +1,5 @@
-.PHONY: plot3d clean dist-clean doc
+.PHONY: clean dist-clean doc plot3d
+.ONESHELL: plot3d
 
 INC = ./inc
 SRC = ./src
@@ -8,7 +9,7 @@ OBJETOs = leitura.o escrita.o sistema.o metodo.o
 libFLAGS = -lm
 
 # all: compila e produz um executável chamado pdeSolver no diretório login1-login2/;
-all: dist-clean leitura escrita sistema metodo
+all: leitura escrita sistema metodo
 	gcc -o pdeSolver $(cFLAGS) $(OBJETOs) $(libFLAGS) $(SRC)/pdeSolver.c
 
 leitura:
@@ -25,33 +26,31 @@ metodo:
 
 # gnuplot -c "pde3d.plg" "arq.dat" $${NX} $${NY}
 plot3d:
-	ARQDAT=$$(cat arqdat) && \
-	NX=$$(cat nx) && NY=$$(cat ny) && \
-	gnuplot -c "pde3d.plg" "$${ARQDAT}" $${NX} $${NY}
-
-# gnuplot -c "pde3dAnimacao.plg" "arq.dat" $${NX} $${NY}
-plot3dAnim:
-	ARQDAT=$$(cat arqdat) && \
-	NX=$$(cat nx) && NY=$$(cat ny) && \
-	gnuplot -c ""pde3dAnimacao.plg"" "$${ARQDAT}" $${NX} $${NY}
+	@ARQDAT=$$(cat arqdat)
+	@NX=$$(cat nx) && NY=$$(cat ny)
+	@gnuplot -c "pde3d.plg" "$${ARQDAT}" $${NX} $${NY}
 
 # clean: remove todos os arquivos temporários e os arquivos gerados pelo Makefile (*.o, executável, etc.).
 clean:
-	rm *.o || true
-	rm *~ || true
+	@echo Remvendo arquivos-objeto e arquivos temporários...
+	@rm -f *.o 
+	@rm -f *~ 
 
 dist-clean: clean
-	rm nx || true
-	rm ny || true
-	ARQDAT=$$(cat arqdat) && \
-	rm $${ARQDAT} || true
-	rm arqdat || true
+	@echo Removendo arquivos auxiliares...
+	@rm -f nx 
+	@rm -f ny 
+	@ARQDAT=$$(cat arqdat) && rm -f $${ARQDAT} 
+	@rm -f ./frames/* 
+	@echo Removendo arquivo dos pontos...
+	@rm -f arqdat 
 
 clean-docs:
-	rm -rf ./doc/ || true
+	@rm -f -rf ./doc/ 
 
 purge: clean dist-clean clean-docs
-	rm pdeSolver || true
+	@rm -f pdeSolver 
+	@rm -f pdeAnim.mp4 
 
 # doc: gera a documentação Doxygen em formato html
 doc:

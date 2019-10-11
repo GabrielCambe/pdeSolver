@@ -32,11 +32,18 @@ void aloca_sist(Sist_Lin* sist, unsigned int nx, unsigned int ny){
   }
 
   // criar os valores que representam a matriz A
-  sist->dInfy = -((1/(hx*hx)) + (1/(2*hx))); 
-  sist->dInfx = -((1/(hy*hy)) + (1/(2*hy)));
+  sist->dInfy = -((1/(2*hx)) + (1/(hx*hx))); 
+  sist->dInfx = -((1/(2*hy)) + (1/(hy*hy)));
   sist->dPrin = ((4*PI*PI)+(2/(hx*hx))+(2/(hy*hy)));
-  sist->dSupy = -((1/(hy*hy)) - (1/(2*hy)));
-  sist->dSupx = -((1/(hx*hx)) - (1/(2*hx)));
+  sist->dSupy = -((1/(2*hy)) - (1/(hy*hy)));
+  sist->dSupx = -((1/(2*hx)) - (1/(hx*hx)));
+
+  // antes eu tinha o sistema assim a convergencia se dava de maneira diferente
+  // sist->dInfy = -((1/(hx*hx)) + (1/(2*hx))); 
+  // sist->dInfx = -((1/(hy*hy)) + (1/(2*hy)));
+  // sist->dPrin = ((4*PI*PI)+(2/(hx*hx))+(2/(hy*hy)));
+  // sist->dSupy = -((1/(hy*hy)) - (1/(2*hy)));
+  // sist->dSupx = -((1/(hx*hx)) - (1/(2*hx)));
 
   return;
 }
