@@ -41,7 +41,7 @@ dist-clean: clean
 	@rm -f nx 
 	@rm -f ny 
 	@ARQDAT=$$(cat arqdat) && rm -f $${ARQDAT} 
-	@rm -f ./frames/* 
+	@rm -f ./animate/frames/* 
 	@echo Removendo arquivo dos pontos...
 	@rm -f arqdat 
 
@@ -50,7 +50,7 @@ clean-docs:
 
 purge: clean dist-clean clean-docs
 	@rm -f pdeSolver 
-	@rm -f pdeAnim.mp4 
+	@rm -f ./animate/pdeAnim.mp4 
 
 # doc: gera a documentação Doxygen em formato html
 doc:
