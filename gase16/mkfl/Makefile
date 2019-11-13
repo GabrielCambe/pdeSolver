@@ -9,11 +9,20 @@ OBJETOs = leitura.o escrita.o sistema.o metodo.o
 libFLAGS = -lm
 
 # all: compila e produz um executável chamado pdeSolver no diretório login1-login2/;
-all:
-	gcc -o pdeSolver -I./inc -Wall -O0 ./src/pdeSolver.c -lm
+all: leitura escrita sistema metodo
+	gcc -o pdeSolver $(cFLAGS) $(OBJETOs) $(libFLAGS) $(SRC)/pdeSolver.c
 
-debug:
-	gcc -o pdeSolver -I./inc -Wall -O0 -g ./src/pdeSolver.c -lm
+leitura:
+	gcc $(objFLAGS) $(SRC)/leitura.c
+
+escrita:
+	gcc $(objFLAGS) $(SRC)/escrita.c
+
+sistema:
+	gcc $(objFLAGS) $(SRC)/sistema.c
+
+metodo:
+	gcc $(objFLAGS) $(SRC)/metodo.c
 
 # gnuplot -c "pde3d.plg" "arq.dat" $${NX} $${NY}
 plot3d:

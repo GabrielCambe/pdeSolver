@@ -1,5 +1,0 @@
-set title "Solução númerica da PDE"    
-# set xlabel ""    
-# set ylabel "" 
-plot solucao with lines
-pause -1 "Pressione enter para continuar!"
